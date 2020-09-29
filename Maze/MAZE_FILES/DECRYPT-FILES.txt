@@ -1,0 +1,61 @@
+Attention!
+
+----------------------------
+| What happened?
+----------------------------
+
+We hacked your network and now all your files, documents, photos, databases, and other important data are safely encrypted with reliable algorithms.
+You cannot access the files right now. But do not worry. You can get it back! It is easy to recover in a few steps.
+
+We have also downloaded a lot of private data from your network, so in case of not contacting us as soon as possible this data will be released.
+If you do not contact us in a 3 days we will post information about your breach on our public news website and after 7 days the whole downloaded info.
+
+To see what happens to those who don't contact us, google:
+* Southwire Maze Ransomware
+* MDLab Maze Ransomware
+* City of Pensacola Maze Ransomware
+
+After the payment the data will be removed from our disks and decryptor will be given to you, so you can restore all your files.
+
+----------------------------
+| How to contact us and get my files back?
+----------------------------
+
+The only method to restore your files and be safe from data leakage is to purchase a unique for you private key which is securely stored on our servers. 
+To contact us and purchase the key you have to visit our website in a hidden TOR network.
+
+There are general 2 ways to reach us:
+
+1) [Recommended] Using hidden TOR network.
+
+  a) Download a special TOR browser: https://www.torproject.org/
+  b) Install the TOR Browser.
+  c) Open the TOR Browser.
+  d) Open our website in the TOR browser: http://aoacugmutagkwctu.onion/6b170c9a9bc68372
+  e) Follow the instructions on this page. 
+
+2) If you have any problems connecting or using TOR network
+
+  a) Open our website: https://mazedecrypt.top/6b170c9a9bc68372
+  b) Follow the instructions on this page.
+
+Warning: the second (2) method can be blocked in some countries. That is why the first (1) method is recommended to use. 
+
+On this page, you will see instructions on how to make a free decryption test and how to pay.
+Also it has a live chat with our operators and support team.
+
+----------------------------
+| What about guarantees?
+----------------------------
+
+We understand your stress and worry.
+So you have a FREE opportunity to test a service by instantly decrypting for free three files from every system in your network.
+If you have any problems our friendly support team is always here to assist you in a live chat!
+
+P.S. Dear system administrators, do not think you can handle it by yourself. Inform leadership as soon as possible.
+By hiding the fact of the breach you will be eventually fired and sometimes even sued.
+-------------------------------------------------------------------------------
+THIS IS A SPECIAL BLOCK WITH A PERSONAL AND CONFIDENTIAL INFORMATION! DO NOT TOUCH IT WE NEED IT TO IDENTIFY AND AUTHORIZE YOU
+---BEGIN MAZE KEY---
+%base64key%
+---END MAZE KEY---

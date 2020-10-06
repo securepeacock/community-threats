@@ -164,7 +164,7 @@
             "17": {
                 "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
                 "module": "run",
-                "request": "cmd /c REG ADD HKEY_CURRENT_USER\\Software\\ExampleRegKey /v Example /d \"Example Data\"",
+                "request": "cmd /c REG ADD HKEY_CURRENT_USER\\Software\\ExampleRegKey /v Example /d \"Example Data\" /f",
                 "rtags": [
                     "att&ck-technique:T1547.001",
                     "att&ck-technique:T1112"
@@ -183,7 +183,7 @@
             "19": {
                 "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
                 "module": "run",
-                "request": "cmd /c SCHTASKS /CREATE /SC DAILY /TN \"MyTasks\\Example Task\" /TR \"C:\\example_service.exe\" /ST 11:00",
+                "request": "cmd /c SCHTASKS /CREATE /SC DAILY /TN \"MyTasks\\Example Task\" /TR \"C:\\example_service.exe\" /ST 11:00 /F",
                 "rtags": [
                     "att&ck-technique:T1053",
                     "att&ck-technique:T1053.005"

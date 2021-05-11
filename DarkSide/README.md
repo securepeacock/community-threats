@@ -1,6 +1,6 @@
 # DarkSide Ransomware Adversary Emulation Plan
 
-This threat is based on CyberReason's Cyber Threat Intelligence: https://www.cybereason.com/blog/cybereason-vs-darkside-ransomware
+This threat is based on Cybereason's Cyber Threat Intelligence: https://www.cybereason.com/blog/cybereason-vs-darkside-ransomware
 
 To emulate:
 1. Download and import the threat in JSON format to your SCYTHE instance - https://raw.githubusercontent.com/scythe-io/community-threats/master/DarkSide/DarkSide_scythe_threat.json

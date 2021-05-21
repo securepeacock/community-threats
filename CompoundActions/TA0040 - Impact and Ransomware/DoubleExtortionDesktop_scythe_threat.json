@@ -1,7 +1,7 @@
 {
     "threat": {
         "category": "User-Defined",
-        "description": "This threat encrypts exfiltrates and encrypts all files on the users Desktop. Use at your own risk.",
+        "description": "This threat exfiltrates and encrypts all files on the users Desktop. Use at your own risk.",
         "display_name": "DoubleExtortionDesktop",
         "name": "DoubleExtortionDesktop",
         "operating_system_name": "windows",

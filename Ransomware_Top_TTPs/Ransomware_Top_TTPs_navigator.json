@@ -36,7 +36,7 @@
 		{
 			"techniqueID": "T1059",
 			"tactic": "execution",
-			"score": 25,
+			"score": 100,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -44,39 +44,9 @@
 			"showSubtechniques": false
 		},
 		{
-			"techniqueID": "T1059.001",
-			"tactic": "execution",
-			"score": 20,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1136",
-			"tactic": "persistence",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1136.001",
-			"tactic": "persistence",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1543",
+			"techniqueID": "T1053",
 			"tactic": "privilege-escalation",
-			"score": 5,
+			"score": 80,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -84,9 +54,9 @@
 			"showSubtechniques": false
 		},
 		{
-			"techniqueID": "T1543.003",
+			"techniqueID": "T1053.005",
 			"tactic": "privilege-escalation",
-			"score": 5,
+			"score": 80,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -94,7 +64,7 @@
 			"showSubtechniques": false
 		},
 		{
-			"techniqueID": "T1078",
+			"techniqueID": "T1551",
 			"tactic": "defense-evasion",
 			"score": 20,
 			"color": "",
@@ -104,418 +74,8 @@
 			"showSubtechniques": false
 		},
 		{
-			"techniqueID": "T1078.002",
+			"techniqueID": "T1551.004",
 			"tactic": "defense-evasion",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1112",
-			"tactic": "defense-evasion",
-			"score": 15,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1003",
-			"tactic": "credential-access",
-			"score": 15,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1003.001",
-			"tactic": "credential-access",
-			"score": 15,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1016",
-			"tactic": "discovery",
-			"score": 15,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1049",
-			"tactic": "discovery",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1069",
-			"tactic": "discovery",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1069.001",
-			"tactic": "discovery",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1082",
-			"tactic": "discovery",
-			"score": 25,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1021.001",
-			"tactic": "lateral-movement",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1021",
-			"tactic": "lateral-movement",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1021.002",
-			"tactic": "lateral-movement",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1074",
-			"tactic": "collection",
-			"score": 25,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1074.001",
-			"tactic": "collection",
-			"score": 20,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1560",
-			"tactic": "collection",
-			"score": 25,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1560.002",
-			"tactic": "collection",
-			"score": 15,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1041",
-			"tactic": "exfiltration",
-			"score": 25,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1071",
-			"tactic": "command-and-control",
-			"score": 25,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1219",
-			"tactic": "command-and-control",
-			"score": 25,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1573",
-			"tactic": "command-and-control",
-			"score": 20,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1486",
-			"tactic": "impact",
-			"score": 25,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1489",
-			"tactic": "impact",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1491",
-			"tactic": "impact",
-			"score": 10,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1491.001",
-			"tactic": "impact",
-			"score": 10,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1531",
-			"tactic": "impact",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1087",
-			"tactic": "discovery",
-			"score": 10,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1087.002",
-			"tactic": "discovery",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1071.001",
-			"tactic": "command-and-control",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1547",
-			"tactic": "privilege-escalation",
-			"score": 10,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1547.001",
-			"tactic": "privilege-escalation",
-			"score": 10,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1059.003",
-			"tactic": "execution",
-			"score": 15,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1485",
-			"tactic": "impact",
-			"score": 15,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1005",
-			"tactic": "collection",
-			"score": 10,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1140",
-			"tactic": "defense-evasion",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1482",
-			"tactic": "discovery",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1480",
-			"tactic": "defense-evasion",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1083",
-			"tactic": "discovery",
-			"score": 15,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1562",
-			"tactic": "defense-evasion",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1562.001",
-			"tactic": "defense-evasion",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1105",
-			"tactic": "command-and-control",
-			"score": 15,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1490",
-			"tactic": "impact",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1057",
-			"tactic": "discovery",
 			"score": 20,
 			"color": "",
 			"comment": "",
@@ -526,7 +86,7 @@
 		{
 			"techniqueID": "T1012",
 			"tactic": "discovery",
-			"score": 10,
+			"score": 40,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -534,9 +94,9 @@
 			"showSubtechniques": false
 		},
 		{
-			"techniqueID": "T1018",
+			"techniqueID": "T1033",
 			"tactic": "discovery",
-			"score": 5,
+			"score": 60,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -544,7 +104,247 @@
 			"showSubtechniques": false
 		},
 		{
-			"techniqueID": "T1053",
+			"techniqueID": "T1057",
+			"tactic": "discovery",
+			"score": 80,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1082",
+			"tactic": "discovery",
+			"score": 100,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1074",
+			"tactic": "collection",
+			"score": 100,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1074.001",
+			"tactic": "collection",
+			"score": 80,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1560",
+			"tactic": "collection",
+			"score": 100,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1041",
+			"tactic": "exfiltration",
+			"score": 100,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1071",
+			"tactic": "command-and-control",
+			"score": 100,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1219",
+			"tactic": "command-and-control",
+			"score": 100,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1573",
+			"tactic": "command-and-control",
+			"score": 80,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1486",
+			"tactic": "impact",
+			"score": 100,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1490",
+			"tactic": "impact",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1491",
+			"tactic": "impact",
+			"score": 40,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1491.001",
+			"tactic": "impact",
+			"score": 40,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1531",
+			"tactic": "impact",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1087",
+			"tactic": "discovery",
+			"score": 40,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1087.002",
+			"tactic": "discovery",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1071.001",
+			"tactic": "command-and-control",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1560.002",
+			"tactic": "collection",
+			"score": 60,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1547",
+			"tactic": "privilege-escalation",
+			"score": 40,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1547.001",
+			"tactic": "privilege-escalation",
+			"score": 40,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1059.001",
+			"tactic": "execution",
+			"score": 80,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1059.003",
+			"tactic": "execution",
+			"score": 60,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1136",
+			"tactic": "persistence",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1136.001",
+			"tactic": "persistence",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1543",
 			"tactic": "privilege-escalation",
 			"score": 20,
 			"color": "",
@@ -554,8 +354,188 @@
 			"showSubtechniques": false
 		},
 		{
-			"techniqueID": "T1053.005",
+			"techniqueID": "T1543.003",
 			"tactic": "privilege-escalation",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1485",
+			"tactic": "impact",
+			"score": 60,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1005",
+			"tactic": "collection",
+			"score": 40,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1140",
+			"tactic": "defense-evasion",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1482",
+			"tactic": "discovery",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1480",
+			"tactic": "defense-evasion",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1083",
+			"tactic": "discovery",
+			"score": 60,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1562",
+			"tactic": "defense-evasion",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1562.001",
+			"tactic": "defense-evasion",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1105",
+			"tactic": "command-and-control",
+			"score": 60,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1112",
+			"tactic": "defense-evasion",
+			"score": 60,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1003",
+			"tactic": "credential-access",
+			"score": 60,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1003.001",
+			"tactic": "credential-access",
+			"score": 60,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1069",
+			"tactic": "discovery",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1069.001",
+			"tactic": "discovery",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1021",
+			"tactic": "lateral-movement",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1021.001",
+			"tactic": "lateral-movement",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1021.002",
+			"tactic": "lateral-movement",
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1018",
+			"tactic": "discovery",
 			"score": 20,
 			"color": "",
 			"comment": "",
@@ -566,7 +546,17 @@
 		{
 			"techniqueID": "T1113",
 			"tactic": "collection",
-			"score": 5,
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1489",
+			"tactic": "impact",
+			"score": 20,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -576,7 +566,7 @@
 		{
 			"techniqueID": "T1218",
 			"tactic": "defense-evasion",
-			"score": 5,
+			"score": 20,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -586,7 +576,7 @@
 		{
 			"techniqueID": "T1218.011",
 			"tactic": "defense-evasion",
-			"score": 5,
+			"score": 20,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -596,7 +586,7 @@
 		{
 			"techniqueID": "T1518",
 			"tactic": "discovery",
-			"score": 10,
+			"score": 40,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -606,7 +596,7 @@
 		{
 			"techniqueID": "T1518.001",
 			"tactic": "discovery",
-			"score": 10,
+			"score": 40,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -614,9 +604,19 @@
 			"showSubtechniques": false
 		},
 		{
-			"techniqueID": "T1033",
+			"techniqueID": "T1016",
 			"tactic": "discovery",
-			"score": 15,
+			"score": 60,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1049",
+			"tactic": "discovery",
+			"score": 20,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -626,7 +626,7 @@
 		{
 			"techniqueID": "T1007",
 			"tactic": "discovery",
-			"score": 10,
+			"score": 40,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -636,7 +636,7 @@
 		{
 			"techniqueID": "T1124",
 			"tactic": "discovery",
-			"score": 5,
+			"score": 20,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -646,7 +646,7 @@
 		{
 			"techniqueID": "T1204",
 			"tactic": "execution",
-			"score": 5,
+			"score": 20,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -656,7 +656,27 @@
 		{
 			"techniqueID": "T1204.002",
 			"tactic": "execution",
-			"score": 5,
+			"score": 20,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1078",
+			"tactic": "defense-evasion",
+			"score": 80,
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1078.002",
+			"tactic": "defense-evasion",
+			"score": 20,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -666,27 +686,7 @@
 		{
 			"techniqueID": "T1078.003",
 			"tactic": "defense-evasion",
-			"score": 15,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1551",
-			"tactic": "defense-evasion",
-			"score": 5,
-			"color": "",
-			"comment": "",
-			"enabled": true,
-			"metadata": [],
-			"showSubtechniques": false
-		},
-		{
-			"techniqueID": "T1551.004",
-			"tactic": "defense-evasion",
-			"score": 5,
+			"score": 60,
 			"color": "",
 			"comment": "",
 			"enabled": true,
@@ -696,13 +696,12 @@
 	],
 	"gradient": {
 		"colors": [
-			"#07f959",
-			"#f0f700",
-			"#f9ac03",
-			"#f90303"
+			"#8ec843",
+			"#ffe766",
+			"#ff6666"
 		],
-		"minValue": 5,
-		"maxValue": 25
+		"minValue": 20,
+		"maxValue": 100
 	},
 	"legendItems": [],
 	"metadata": [],

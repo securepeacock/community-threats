@@ -216,7 +216,7 @@
                 "module": "run",
                 "request": "cmd /c rmdir /Q /S %USERPROFILE%\\Desktop\\DarkSide\"",
                 "rtags": [
-                    "att&ck-technique:T1551.004"
+                    "att&ck-tactic:TA0040",
                 ],
                 "type": "message"
             }

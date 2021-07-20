@@ -1,6 +1,6 @@
 # T1003.002 - OS Credential Dumping: Security Account Manager
 
-On July 19, 2021, @jonasLyk noticed the SAM file is readable by all users. Upon further investigation, a number of Windows versions allowed any user to read the SAM file. FOr more about OS Credential Dumping: https://attack.mitre.org/techniques/T1003/002/
+On July 19, 2021, @jonasLyk noticed the SAM file is readable by all users. Upon further investigation, a number of Windows versions allowed any user to read the SAM file. For more about OS Credential Dumping: https://attack.mitre.org/techniques/T1003/002/
 
 ## Check if system is vulnerable
 As a non-administrative user, run the following in a command prompt
@@ -33,7 +33,7 @@ A vulnerable system will report ```BUILTIN\Users:(I)(RX)```
 - ```certutil -decode SAM.encoded SAM.hive```
 
 ## Prevention
-Restrict access to sam, system, and security files and remove VSS shadow copies. On a command prompt with administrative privileges:
+Restrict access to SAM, SYSTEM, and SECURITY files and remove VSS shadow copies. On a command prompt with administrative privileges:
 - ```icacls %windir%\system32\config\sam /remove "Users"```
 - ```icacls %windir%\system32\config\security /remove "Users"```
 - ```icacls %windir%\system32\config\system /remove "Users"```

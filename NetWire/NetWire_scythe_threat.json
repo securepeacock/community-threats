@@ -58,7 +58,7 @@
                 "module": "run",
                 "request": "cmd /c REG ADD HKEY_CURRENT_USER\\Software\\Netwire /v HostID /d sample.ddns.net",
                 "rtags": [
-                    "att&ck-technique:T1547.001"
+                    "att&ck-technique:T1112"
                 ],
                 "type": "message"
             },

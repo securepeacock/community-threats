@@ -37,5 +37,5 @@ detection:
 fields:
     - TargetObject
 falsepositives:
-    - Known applications will leverage these keys at times, it is recomended to search for anomolous keys inidicative of malware.
+    - Known applications may leverage these keys at times, it is recomended to search for anomolous keys inidicative of malware.
 

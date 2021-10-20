@@ -14,7 +14,7 @@ tags:
     - attack.t1547.001
 date: 2021/10/20
 author: Christopher Peacock (@securepeacock)
-level: low
+level: high
 logsource:
     product: windows
     category: registry_event
@@ -31,9 +31,11 @@ detection:
             - '\software\Microsoft\Windows NT\CurrentVersion\Windows'
             - '\software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders'
             - '\system\CurrentControlSet\Control\SafeBoot\AlternateShell'
+        Details|contains:
+            - \AppData\Roaming\
     condition: selection1
 fields:
     - TargetObject
 falsepositives:
-    - Known applications will leverage these keys at times, it is recomended to search for anomolous keys that may be inidicative of malware.
-    
+    - Known applications will leverage these keys at times, it is recomended to search for anomolous keys inidicative of malware.
+

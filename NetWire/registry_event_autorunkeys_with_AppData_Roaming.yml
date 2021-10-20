@@ -1,4 +1,4 @@
-title: Registy Autorun Keys From AppData Roaming
+title: Registry Autorun Keys With \AppData\Roaming\
 id: 937a4ef4-d56b-4976-93a0-6936f89b3dfe
 description: Attempts to detect direct modification of autostart extensibility point (ASEP) in registry
 status: experimental

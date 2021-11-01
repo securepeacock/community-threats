@@ -21,15 +21,14 @@ This SCYTHE Compound Action injects another SCYTHE payload into a process that i
 3. Rename to unicorn_shell.exe
 3. Upload to VFS/shared/unicorn_shell.exe
 
-## Attack Emulation with SCYTHE
+## Automated Attack Emulation with SCYTHE
 1. Create a new campaign
 2. Select the Compound Action for T1055.012
 3. Launch the campaign
 4. Execute the campaign on a client
 
-## Manual Attack Emulation
+## Manual Attack Emulation with SCYTHE
 - ```loader --load scythe.phollowing```
-- ```scythe.phollowing --src=C:\Users\LocalUser\Downloads\ShellUnicorns.exe --target=C:\Windows\System32\calc.exe```
 - ```scythe.phollowing --src VFS:/shared/unicorn_shell.exe --target C:\Windows\System32\calc.exe```
 
 ## References

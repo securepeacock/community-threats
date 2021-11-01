@@ -31,7 +31,6 @@ This SCYTHE Compound Action injects another SCYTHE payload into a process that i
 - ```loader --load scythe.phollowing```
 - ```scythe.phollowing --src=C:\Users\LocalUser\Downloads\ShellUnicorns.exe --target=C:\Windows\System32\calc.exe```
 - ```scythe.phollowing --src VFS:/shared/unicorn_shell.exe --target C:\Windows\System32\calc.exe```
-**Note the target can be any executable on the client system as long as the 
 
 ## References
 - https://attack.mitre.org/techniques/T1055/012/

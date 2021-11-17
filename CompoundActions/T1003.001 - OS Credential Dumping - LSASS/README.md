@@ -32,3 +32,4 @@ As well as in-memory techniques, the LSASS process memory can be dumped from the
 ## References
 - https://attack.mitre.org/techniques/T1003/001/
 - https://twitter.com/mrd0x/status/1460597833917251595
+- https://github.com/SigmaHQ/sigma/blob/f36b1cbd2a3f1a7423f43a67a182549778700615/rules/windows/process_creation/win_susp_procdump.yml

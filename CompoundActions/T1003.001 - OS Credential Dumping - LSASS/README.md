@@ -20,8 +20,8 @@ As well as in-memory techniques, the LSASS process memory can be dumped from the
 - Place procdump in "C:\Program Files (x86)\Microsoft Visual Studio\"
 - Rename to dump64.exe
 - Execute from a cmd.exe with local admin priv:
-``` dump64.exe -ma <PID> out.dmp
-```
+
+``` dump64.exe -ma <PID> out.dmp ```
 
 ### Notes
 - Cannot use the full path of dump64.exe, must be executed from within the Microsoft Visual Studio directory

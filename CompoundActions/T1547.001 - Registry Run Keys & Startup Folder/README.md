@@ -12,3 +12,9 @@ This compound action leverages PowerShell to add an lnk shortcut to the startup 
 6. Find the imported Compound Action and click the tag icon
 7. Tag the MITRE ATT&CK Technique for the Compound Action
 8. Upload the files in VFS folder into VFS/shared/T1547
+
+## Detection References
+
+1. https://redcanary.com/blog/intelligence-insights-october-2021/
+> process_name == powershell.exe && process_command_line_contains == appdata && filemod_path_contains == start menu\programs\startup && filemod_extension == .lnk
+2. https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file_event/sysmon_powershell_startup_shortcuts.yml

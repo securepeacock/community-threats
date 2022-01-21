@@ -1,6 +1,5 @@
 # Adversary Emulation Plan Library
-This repository is for sharing adversary emulation plans in JSON format.
-Currently we support SCYTHE threats and MITRE ATT&CK Navigator both of which use the JSON format.
+This repository is for sharing adversary emulation plans in JSON format. We support SCYTHE threats and MITRE ATT&CK Navigator both of which use the JSON format.
 
 ## How-to use the library
 1. Select the adversary folder you are interested in.

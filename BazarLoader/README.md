@@ -43,7 +43,7 @@ The CTI for this threat comes from https://thedfirreport.com/2021/12/13/diavol-r
 ## BazarLoader Excel to WMIC to PowerShell to rundll32.exe
 This CTI comes from https://app.any.run/tasks/c5dc698b-8e86-4e50-8b32-d8f45f7538b3/
 
-### Stage0
+### BazarLoaderStage0
 1. Download and import the threats in JSON format to your SCYTHE instance
 2. Create a new campaign `BazarLoaderStage0` with HTTPS
 3. Import from Existing Threat: BazarLoaderStage0
@@ -51,14 +51,14 @@ This CTI comes from https://app.any.run/tasks/c5dc698b-8e86-4e50-8b32-d8f45f7538
 5. Launch the Campaign
 6. Start Stage 1 and 2 before execution
 
-### Stage1
+### BazarLoaderStage1
 1. Create a new campaign `BazarLoaderStage1` with HTTPS
 2. Import from Existing Threat: BazarLoaderStage1
 3. Launch the Campaign
 4. Save the 64-bit EXE as `BazarLoaderStage1.exe`
 5. Upload to VFS:/shared/BazarLoader/BazarLoaderStage1.exe
 
-### Stage 2
+### BazarLoaderStage2
 1. Create a new campaign `BazarLoaderStage2` with HTTPS
 2. Add any automation you would like to execute
 3. Launch the Campaign

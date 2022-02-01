@@ -1,4 +1,4 @@
-# BazarLoader - Adversary Emulation Plan
+# BazarLoader
 
 BazarLoader is used as part of the initial access portion of multiple threat groups. The threat focuses on bypassing defenses and is commonly changing TTPs. In this threat, we cover a number of different examples observed in the wild.
 

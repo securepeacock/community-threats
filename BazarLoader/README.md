@@ -2,6 +2,32 @@
 
 BazarLoader is used as part of the initial access portion of multiple threat groups. The threat focuses on bypassing defenses and is commonly changing TTPs. In this threat, we cover a number of different examples observed in the wild.
 
+## BazarLoader Excel to WMIC to PowerShell to rundll32.exe
+This CTI comes from https://app.any.run/tasks/c5dc698b-8e86-4e50-8b32-d8f45f7538b3/
+
+### BazarLoaderStage0
+1. Download and import the threats in JSON format to your SCYTHE instance
+2. Create a new campaign `BazarLoaderStage0` with HTTPS
+3. Import from Existing Threat: BazarLoaderStage0
+4. Modify the process hollowing command to match the location where Microsoft Excel is installed in the target system
+5. Launch the Campaign
+6. Start Stage 1 and 2 before execution
+
+### BazarLoaderStage1
+1. Create a new campaign `BazarLoaderStage1` with HTTPS
+2. Import from Existing Threat: BazarLoaderStage1
+3. Launch the Campaign
+4. Save the 64-bit EXE as `BazarLoaderStage1.exe`
+5. Upload to VFS:/shared/BazarLoader/BazarLoaderStage1.exe
+
+### BazarLoaderStage2
+1. Create a new campaign `BazarLoaderStage2` with HTTPS
+2. Add any automation you would like to execute
+3. Launch the Campaign
+4. Download the DLL with entry-point set to `setscreen`
+5. Save the DLL as `87764675478.dll`
+6. Upload the DLL to VFS:/shared/BazarLoader/87764675478.dll
+
 ## Diavol Ransomware
 The CTI for this threat comes from https://thedfirreport.com/2021/12/13/diavol-ransomware/ and is further explained in our #ThreatThursday blog series: https://www.scythe.io/library/adversary-emulation-diavol-ransomware-threatthursday
 
@@ -40,28 +66,3 @@ The CTI for this threat comes from https://thedfirreport.com/2021/12/13/diavol-r
 5. Save the DLL as `tfpkuengdlu.dll`
 6. Upload the `tfpkuengdlu.dll` to the VFS under VFS:/shared/Diavol
 
-## BazarLoader Excel to WMIC to PowerShell to rundll32.exe
-This CTI comes from https://app.any.run/tasks/c5dc698b-8e86-4e50-8b32-d8f45f7538b3/
-
-### BazarLoaderStage0
-1. Download and import the threats in JSON format to your SCYTHE instance
-2. Create a new campaign `BazarLoaderStage0` with HTTPS
-3. Import from Existing Threat: BazarLoaderStage0
-4. Modify the process hollowing command to match the location where Microsoft Excel is installed in the target system
-5. Launch the Campaign
-6. Start Stage 1 and 2 before execution
-
-### BazarLoaderStage1
-1. Create a new campaign `BazarLoaderStage1` with HTTPS
-2. Import from Existing Threat: BazarLoaderStage1
-3. Launch the Campaign
-4. Save the 64-bit EXE as `BazarLoaderStage1.exe`
-5. Upload to VFS:/shared/BazarLoader/BazarLoaderStage1.exe
-
-### BazarLoaderStage2
-1. Create a new campaign `BazarLoaderStage2` with HTTPS
-2. Add any automation you would like to execute
-3. Launch the Campaign
-4. Download the DLL with entry-point set to `setscreen`
-5. Save the DLL as `87764675478.dll`
-6. Upload the DLL to VFS:/shared/BazarLoader/87764675478.dll

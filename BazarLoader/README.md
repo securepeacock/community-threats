@@ -14,7 +14,7 @@ The CTI for this threat comes from https://thedfirreport.com/2021/12/13/diavol-r
 6. Launch the Campaign
 7. Download payload in DLL format setting the entry-point to `BasicScore`
 8. Save the DLL as `SharedFiles.dll`
-9. Start Stage 1 before execution
+9. Start Stage 1 and 2 before execution
 11. Copy the src folder from our [Compound Actions GitHub for T1553.005](https://github.com/scythe-io/compound-actions/tree/main/T1553.005%20-%20Mark-of-the-Web%20Bypass/src) to a working directory on your Windows system
 12. Put the SCYTHE DLL in the Folder2Iso of the working directory
 13. In the Folder2Iso directory, create a shortcut called `Documents` and set the `Target` to: `C:\Windows\System32\rundll32.exe SharedFiles.dll,BasicScore`
@@ -31,6 +31,14 @@ The CTI for this threat comes from https://thedfirreport.com/2021/12/13/diavol-r
 3. Launch the Campaign
 4. Download payload in EXE format and save it as `DiavolStage1.exe`
 5. Upload the `DiavolStage1.exe` to the VFS under VFS:/shared/Diavol
+
+### DiavolStage2
+1. Create a new campaign `DiavolStage2` with HTTPS and the communication options from the CTI. You can import from the config.json on this GitHub or manually set it to: `--cp yourdomain[.]com:443 --secure true --multipart 10240 --heartbeat 5 --jitter 10`
+2. Import from Existing Threat: DiavolStage2
+3. Launch the Campaign
+4. Download payload in DLL format setting the entry-point to `EnterDll`
+5. Save the DLL as `tfpkuengdlu.dll`
+6. Upload the `tfpkuengdlu.dll` to the VFS under VFS:/shared/Diavol
 
 ## BazarLoader Excel to WMIC to PowerShell to rundll32.exe
 This CTI comes from https://app.any.run/tasks/c5dc698b-8e86-4e50-8b32-d8f45f7538b3/

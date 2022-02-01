@@ -34,7 +34,7 @@ The CTI for this threat comes from https://thedfirreport.com/2021/12/13/diavol-r
 
 ### DiavolStage2
 1. Create a new campaign `DiavolStage2` with HTTPS and the communication options from the CTI. You can import from the config.json on this GitHub or manually set it to: `--cp yourdomain[.]com:443 --secure true --multipart 10240 --heartbeat 5 --jitter 10`
-2. Import from Existing Threat: DiavolStage2
+2. Import from Existing Threat: DiavolStage2 or create any automation you would like to execute
 3. Launch the Campaign
 4. Download payload in DLL format setting the entry-point to `EnterDll`
 5. Save the DLL as `tfpkuengdlu.dll`

@@ -28,6 +28,28 @@ This CTI comes from https://app.any.run/tasks/c5dc698b-8e86-4e50-8b32-d8f45f7538
 5. Save the DLL as `87764675478.dll`
 6. Upload the DLL to VFS:/shared/BazarLoader/87764675478.dll
 
+## BazarLoader LOG File in ISO
+This CTI comes from https://twitter.com/th3_protoCOL/status/1488600980979552256?s=20&t=QKD0ws_NAZdzjYI8LXmIQA
+
+### BazarLoaderStage1
+
+1. Download and import the BazarLoaderStage1 SCYTHE Threat JSON
+2. Create a new Campaign, Select DiavolStage1 in Existing User-Defined Threats, and click Add Steps
+3. Start Campaign
+4. Select Download, File type DLL, and change the Entry-point function name to spload
+5. Download and change the file name to DumpStack.log 
+6. Create a new folder and place DumpStack.log into it
+7. In the new folder right click navigate to New and select Shortcut
+8. In the Type the location of the item paste in “cmd.exe /c xcopy /y DumpStack.log c:\programdata\ && C:\Windows\System32\rundll32.exe C:\programdata\DumpStack.log,spload && exit” and select next
+9. Name the shortcut Attachments
+10. Once the shortcut is created, right click and select properties
+11. In the properties window clear the Start in field so it’s blank and apply the changes
+12. Launch the application Folder2Iso available at https://github.com/scythe-io/compound-actions/tree/main/T1553.005%20-%20Mark-of-the-Web%20Bypass/src
+13. For the Select Folder field choose the new folder you placed the .log and .lnk files in
+14. Click Select Output and enter a name for the Select Output field, we chose Report
+15. Click Generate ISO
+16. Place the ISO file on the target host system, click the ISO to mount it, and then click the shortcut to execute the campaign
+
 ## Diavol Ransomware
 The CTI for this threat comes from https://thedfirreport.com/2021/12/13/diavol-ransomware/ and is further explained in our #ThreatThursday blog series: https://www.scythe.io/library/adversary-emulation-diavol-ransomware-threatthursday
 

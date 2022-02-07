@@ -1,7 +1,7 @@
 {
     "threat": {
         "category": "User-Defined",
-        "description": "https://github.com/scythe-io/community-threats/tree/master/BlackCat",
+        "description": "https://github.com/scythe-io/community-threats/tree/master/WhiteRabbit",
         "display_name": "WhiteRabbit_v1",
         "name": "WhiteRabbit_v1",
         "operating_system_name": "windows",

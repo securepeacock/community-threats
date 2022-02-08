@@ -5,7 +5,7 @@ This threat is based on the [WeLiveSecure](https://www.welivesecurity.com/2022/0
 # Dazzle Spy 
 1. Download and import the threats in JSON format to your SCYTHE instace
 2. Download the Virtual File System (VFS) files under DazzleSpy/VFS. 
-3. Upload the VFS file to your SCYTHE VFS in the following location: VFS:/shared/DazzleSpy
+3. Upload the VFS file to your SCYTHE VFS in the following location: VFS:/shared/threats/DazzleSpy
 4. Create a new campaign DazzleSpy with HTTPS and the communication option. You can import the `config.json` or manually add 
 `--cp yourdomain.com:443 --secure true --multipart 10240 --heartbeat 5 --jitter 10` 
 5. Import Existing Threat: *DazzleSpy*

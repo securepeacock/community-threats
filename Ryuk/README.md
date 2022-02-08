@@ -9,6 +9,6 @@ We leveraged The DFIR Report's Cyber Threat Intelligence on Ryuk to create and s
 To emulate:
 1. Download and import the threat in JSON format to your SCYTHE instance - https://raw.githubusercontent.com/scythe-io/community-threats/master/Ryuk/Ryuk_scythe_threat.json
 2. Download the Virtual File System (VFS) files under Ryuk/VFS
-3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/ryuk
+3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/threats/ryuk
 4. Go to the Threat Catalog and select "Threat Thursday - Ryuk Ransomware"
 5. Click "Create Campaign from Threat" to start your campaign

@@ -334,7 +334,7 @@
             "40": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Hive/HOW_TO_DECRYPT.txt\" --dest \"%USERPROFILE%\\Desktop\\HOW_TO_DECRYPT.txt\"",
+                "request": "--src \"VFS:/shared/threats/Hive/HOW_TO_DECRYPT.txt\" --dest \"%USERPROFILE%\\Desktop\\HOW_TO_DECRYPT.txt\"",
                 "rtags": [
                     "att&ck-technique:T1491.001"
                 ],

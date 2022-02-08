@@ -53,7 +53,7 @@
             "7": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src VFS:/shared/ryuk/taskkill.bat --dest %USERPROFILE%\\Desktop\\ryuk\\taskkill.bat",
+                "request": "--src VFS:/shared/threats/ryuk/taskkill.bat --dest %USERPROFILE%\\Desktop\\ryuk\\taskkill.bat",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -147,7 +147,7 @@
             "18": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src VFS:/shared/ryuk/adf.bat --dest %USERPROFILE%\\Desktop\\ryuk\\adf.bat",
+                "request": "--src VFS:/shared/threats/ryuk/adf.bat --dest %USERPROFILE%\\Desktop\\ryuk\\adf.bat",
                 "rtags": [
                     "att&ck",
                     "att&ck-technique:T1105"
@@ -417,7 +417,7 @@
             "49": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/ryuk/PowerView.ps1\" --dest \"%USERPROFILE%\\Desktop\\ryuk\\PowerView.ps1\"",
+                "request": "--src \"VFS:/shared/threats/ryuk/PowerView.ps1\" --dest \"%USERPROFILE%\\Desktop\\ryuk\\PowerView.ps1\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -530,7 +530,7 @@
             "63": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/ryuk/RyukReadMe.txt\" --dest %USERPROFILE%\\Desktop\\ryuk\\RyukReadMe.txt",
+                "request": "--src \"VFS:/shared/threats/ryuk/RyukReadMe.txt\" --dest %USERPROFILE%\\Desktop\\ryuk\\RyukReadMe.txt",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],

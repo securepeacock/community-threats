@@ -90,13 +90,13 @@
             "11": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/FIN6/web1.js\" --dest \"%USERPROFILE%/Desktop/FIN6/web1.js\"",
+                "request": "--src \"VFS:/shared/threats/FIN6/web1.js\" --dest \"%USERPROFILE%/Desktop/FIN6/web1.js\"",
                 "type": "message"
             },
             "12": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/FIN6/web2.js\" --dest \"%USERPROFILE%/Desktop/FIN6/web2.js\"",
+                "request": "--src \"VFS:/shared/threats/FIN6/web2.js\" --dest \"%USERPROFILE%/Desktop/FIN6/web2.js\"",
                 "type": "message"
             },
             "13": {

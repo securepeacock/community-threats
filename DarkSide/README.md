@@ -7,7 +7,7 @@ This threat is based on Cybereason's Cyber Threat Intelligence from April 2021: 
 To emulate:
 1. Download and import the threat in JSON format to your SCYTHE instance - https://raw.githubusercontent.com/scythe-io/community-threats/master/DarkSide/DarkSide_scythe_threat.json
 2. Download the Virtual File System (VFS) files under DarkSide/VFS
-3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/DarkSide
+3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/threats/DarkSide
 4. Ensure HTTP Relay is running on your SCYTHE server.
 5. Create a new campaign, selecting HTTP, and ensuring the communication options match your HTTP Relay. Consider using a "naked IP address" instead of a domain to more closely emulate this attack.
 6. Import from Existing Threat: DarkSide

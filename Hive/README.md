@@ -12,7 +12,7 @@ After compromising a victim network, Hive ransomware actors exfiltrate data and 
 
 1. Download and import the threat in JSON format to your SCYTHE instance 
 2. Download the Virtual File System (VFS) files under the VFS folder
-3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/Hive
+3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/threats/Hive
 4. Create a new campaign, selecting HTTPS, and configure your HTTPS communication options.
 5. Import from Existing Threat: Hive
 6. Launch Campaign

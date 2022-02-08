@@ -235,7 +235,7 @@
             "26": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/LockBit/Restore-My-Files.txt\" --dest \"%USERPROFILE%\\Desktop\\LockBit\\Restore-My-Files.txt\"",
+                "request": "--src \"VFS:/shared/threats/LockBit/Restore-My-Files.txt\" --dest \"%USERPROFILE%\\Desktop\\LockBit\\Restore-My-Files.txt\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],

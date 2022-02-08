@@ -232,7 +232,7 @@
             "27": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src VFS:/shared/UNC2452/invoke-kerberoast.ps1 --dest .\\UNC2452\\invoke-kerberoast.ps1",
+                "request": "--src VFS:/shared/threats/UNC2452/invoke-kerberoast.ps1 --dest .\\UNC2452\\invoke-kerberoast.ps1",
                 "type": "message"
             },
             "28": {

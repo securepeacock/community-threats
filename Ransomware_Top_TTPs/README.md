@@ -5,7 +5,7 @@ This adversary emulation plan was created for a customer that asked "what are th
 To emulate:
 1. Download and import the threat in JSON format to your SCYTHE instance
 2. Download the Virtual File System (VFS) files under Ransomware/VFS
-3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/Ransomware
+3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/threats/Ransomware
 4. Create a new campaign over HTTPS port tcp/443
 5. Import from Existing Threat: Ransomware_Top_10
 6. Launch Campaign

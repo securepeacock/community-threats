@@ -9,7 +9,7 @@ Upon execution, Lockbit 2.0 determines the system and user language settings and
 *** Note this threat is destructive if running with high privilege ***
 1. Download and import the threat in JSON format to your SCYTHE instance
 2. Download the Virtual File System (VFS) files under LockBit/VFS
-3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/LockBit
+3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/threats/LockBit
 4. Create a new campaign with HTTPS.
 5. Import from Existing Threat: LockBit
 6. Launch the Campaign
@@ -64,7 +64,7 @@ crypt --target "%USERPROFILE%\Desktop\LockBit\" --encrypt --password "LockBit" -
 Download the ransom note and open it:
 ```
 loader --load downloader
-downloader --src "VFS:/shared/LockBit/Restore-My-Files.txt" --dest "%USERPROFILE%\Desktop\LockBit\Restore-My-Files.txt"
+downloader --src "VFS:/shared/threats/LockBit/Restore-My-Files.txt" --dest "%USERPROFILE%\Desktop\LockBit\Restore-My-Files.txt"
 run powershell notepad "%USERPROFILE%\Desktop\LockBit\Restore-My-Files.txt"
 ```
 Clean up:

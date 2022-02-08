@@ -8,7 +8,7 @@ To emulate:
 
 1. Download and import the threat in JSON format to your SCYTHE instanc:https://github.com/scythe-io/community-threats/blob/master/APT41/APT41_scythe_threat.json
 2. Download the Virtual File System (VFS) files under APT41/VFS: https://github.com/ElaineNeuk/community-threats/tree/master/APT41/VFS
-3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/APT41
+3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/threats/APT41
 4. Click "Create Campaign from Threat"
 5. Name the Campaign
 6. Parameters: Replace unicorn.scythedemo.com with your SCYTHE instance IP address or FQDN.

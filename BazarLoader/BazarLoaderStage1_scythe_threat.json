@@ -20,7 +20,7 @@
             "2": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/BazarLoader/87764675478.dll\" --dest \"C:\\Users\\Public\\87764675478.dll\"",
+                "request": "--src \"VFS:/shared/threats/BazarLoader/87764675478.dll\" --dest \"C:\\Users\\Public\\87764675478.dll\"",
                 "type": "message"
             },
             "3": {

@@ -20,7 +20,7 @@
             "2": {
                 "depends_on": "d94e3d40-2790-11ec-85ac-4ff6483a0164",
                 "module": "scythe.phollowing",
-                "request": "--src VFS:/shared/Diavol/DiavolStage1.exe --target \"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\"",
+                "request": "--src VFS:/shared/threats/Diavol/DiavolStage1.exe --target \"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\"",
                 "rtags": [
                     "att&ck-technique:T1055.012"
                 ],

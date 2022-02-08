@@ -18,7 +18,7 @@ This CTI comes from https://app.any.run/tasks/c5dc698b-8e86-4e50-8b32-d8f45f7538
 2. Import from Existing Threat: BazarLoaderStage1
 3. Launch the Campaign
 4. Save the 64-bit EXE as `BazarLoaderStage1.exe`
-5. Upload to VFS:/shared/BazarLoader/BazarLoaderStage1.exe
+5. Upload to VFS:/shared/threats/BazarLoader/BazarLoaderStage1.exe
 
 ### BazarLoaderStage2
 1. Create a new campaign `BazarLoaderStage2` with HTTPS
@@ -26,7 +26,7 @@ This CTI comes from https://app.any.run/tasks/c5dc698b-8e86-4e50-8b32-d8f45f7538
 3. Launch the Campaign
 4. Download the DLL with entry-point set to `setscreen`
 5. Save the DLL as `87764675478.dll`
-6. Upload the DLL to VFS:/shared/BazarLoader/87764675478.dll
+6. Upload the DLL to VFS:/shared/threats/BazarLoader/87764675478.dll
 
 ## BazarLoader LOG File in ISO
 This CTI comes from https://twitter.com/th3_protoCOL/status/1488600980979552256?s=20&t=QKD0ws_NAZdzjYI8LXmIQA
@@ -56,7 +56,7 @@ The CTI for this threat comes from https://thedfirreport.com/2021/12/13/diavol-r
 ### DiavolStage0
 1. Download and import the threats in JSON format to your SCYTHE instance
 2. Download the Virtual File System (VFS) files under Diavol/VFS
-3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/Diavol
+3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/threats/Diavol
 4. Create a new campaign `DiavolStage0` with HTTPS and the communication options from the CTI. You can import from the config.json on this GitHub or manually set it to: `--cp yourdomain[.]com:443 --secure true --multipart 10240 --heartbeat 5 --jitter 10`
 5. Import from Existing Threat: DiavolStage0
 6. Launch the Campaign
@@ -78,7 +78,7 @@ The CTI for this threat comes from https://thedfirreport.com/2021/12/13/diavol-r
 2. Import from Existing Threat: DiavolStage1
 3. Launch the Campaign
 4. Download payload in EXE format and save it as `DiavolStage1.exe`
-5. Upload the `DiavolStage1.exe` to the VFS under VFS:/shared/Diavol
+5. Upload the `DiavolStage1.exe` to the VFS under VFS:/shared/threats/Diavol
 
 ### DiavolStage2
 1. Create a new campaign `DiavolStage2` with HTTPS and the communication options from the CTI. You can import from the config.json on this GitHub or manually set it to: `--cp yourdomain[.]com:443 --secure true --multipart 10240 --heartbeat 5 --jitter 10`
@@ -86,5 +86,5 @@ The CTI for this threat comes from https://thedfirreport.com/2021/12/13/diavol-r
 3. Launch the Campaign
 4. Download payload in DLL format setting the entry-point to `EnterDll`
 5. Save the DLL as `tfpkuengdlu.dll`
-6. Upload the `tfpkuengdlu.dll` to the VFS under VFS:/shared/Diavol
+6. Upload the `tfpkuengdlu.dll` to the VFS under VFS:/shared/threats/Diavol
 

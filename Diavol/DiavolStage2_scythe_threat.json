@@ -62,7 +62,7 @@
             "8": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Diavol/adf.bat\" --dest \"%USERPROFILE%\\Desktop\\Diavol\\adfind\\adf.bat\"",
+                "request": "--src \"VFS:/shared/threats/Diavol/adf.bat\" --dest \"%USERPROFILE%\\Desktop\\Diavol\\adfind\\adf.bat\"",
                 "type": "message"
             },
             "9": {

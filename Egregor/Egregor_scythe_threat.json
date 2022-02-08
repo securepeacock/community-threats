@@ -7,7 +7,7 @@
         "operating_system_name": "windows",
         "script": {
             "0": {
-                "conf": "--cp unicorn.scythedemo.com:443 --secure true",
+                "conf": "--cp 127.0.0.1:443 --secure true",
                 "module": "https",
                 "type": "initialization"
             },
@@ -289,7 +289,7 @@
             "31": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/egregor/RECOVER-FILES.txt\" --dest \"%USERPROFILE%\\Desktop\\egregor\\x_malicious_files\\RECOVER-FILES.txt\"",
+                "request": "--src \"VFS:/shared/threats/egregor/RECOVER-FILES.txt\" --dest \"%USERPROFILE%\\Desktop\\egregor\\x_malicious_files\\RECOVER-FILES.txt\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],

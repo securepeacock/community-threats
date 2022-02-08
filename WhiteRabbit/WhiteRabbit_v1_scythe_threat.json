@@ -84,7 +84,7 @@
             },
             "11": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/WhiteRabbit/README.scrypt.txt\" --dest \"%USERPROFILE%\\Desktop\\WhiteRabbit\\README.scrypt.txt\"",
+                "request": "--src \"VFS:/shared/threats/WhiteRabbit/README.scrypt.txt\" --dest \"%USERPROFILE%\\Desktop\\WhiteRabbit\\README.scrypt.txt\"",
                 "rtags": [
                     "att&ck-technique:T1491.001"
                 ],

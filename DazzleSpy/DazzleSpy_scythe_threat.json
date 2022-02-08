@@ -1,0 +1,44 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "Dazzle Spy Malware Campaign for MacOS",
+        "display_name": "DazzleSpy",
+        "name": "DazzleSpy",
+        "operating_system_name": "macos",
+        "script": {
+            "0": {
+                "conf": "{\"--cp\":\"127.0.0.1:443\",\"--secure\":true,\"--multipart\":10240}",
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "module": "loader",
+                "module_to_load": "python3",
+                "request": "--load-runtime python3",
+                "type": "message"
+            },
+            "2": {
+                "depends_on": "dd833957-4d55-4a50-9ef3-9752ee95708f",
+                "module": "loader",
+                "module_to_load": "scythe.jxa_loader",
+                "request": "--load scythe.jxa_loader",
+                "type": "message"
+            },
+            "3": {
+                "depends_on": "03107e60-398c-11ec-ba0e-5d31a0f9523e",
+                "module": "scythe.jxa_loader",
+                "request": "--filename \"VFS:/users/BUILTIN/scythe/health_check.js\"",
+                "type": "message"
+            },
+            "4": {
+                "depends_on": "3fd1dca3-7e0f-42cf-8a48-1f5e944868d7",
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29",
+        "tags": []
+    }
+}

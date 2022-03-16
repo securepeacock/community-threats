@@ -43,8 +43,6 @@ run systeminfo
 run whoami /groups
 run net config workstation
 run net use
-run echo %userdomain%
-If step 8 contains "The system cannot find the file specified." goto step 15
 run nltest /domain_trusts
 run nltest /domain_trusts /all_trusts
 run net view /all /domain

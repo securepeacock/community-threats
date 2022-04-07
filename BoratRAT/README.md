@@ -1,13 +1,13 @@
 # Borat RAT - Adversary Emulation Plan
 
-This threat was created by Randy Pargman from BinaryDefense based on the this threat intelligence from March 31, 2022: https://blog.cyble.com/2022/03/31/deep-dive-analysis-borat-rat/
+This threat was created by Randy Pargman from BinaryDefense based on the threat intelligence from March 31, 2022: https://blog.cyble.com/2022/03/31/deep-dive-analysis-borat-rat/
 
 ## Automated Adversary Emulation with SCYTHE
 
 1. Download and import the threats in JSON format to your SCYTHE instance
 2. Download the Virtual File System (VFS) files under BoratRAT/VFS
 3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/
-4. Create a new campaign `BoratRAT` with HTTPS.
+4. Create a new campaign `BoratRAT` with HTTPS
 5. Import from Existing Threat: BoratRAT
 6. Launch the Campaign
 

@@ -1,6 +1,6 @@
 # Red Canary - Emulation Plan
 
-Red Canary is legitimate company and not a threat actor. However, they release actionable Cyber Threat Intelligece and hence why we have added it to our community threats GitHub.
+Red Canary is legitimate company and not a threat actor. However, they release actionable Cyber Threat Intelligence and hence why we have added it to our community threats GitHub.
 
 ## 2022 Threat Detection Report
 Red Canary released the 2022 Threat Detection Report in March 2022 and it includes the top techniques they observed over the past year: https://redcanary.com/threat-detection-report/techniques/ 

@@ -295,7 +295,7 @@
             "28": {
                 "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
                 "module": "upsh",
-                "request": "--cmd $assembly = [Reflection.Assembly]::LoadFile(\"$env:USERPROFILE\\Audio.dll\"); $instance = New-Object AudioRecorder.AudioRecorer; $result =$instance.AudioInit(10);",
+                "request": "--cmd $assembly = [Reflection.Assembly]::LoadFile(\"$env:USERPROFILE\\Audio.dll\"); $instance = New-Object AudioRecorder.AudioRecorder; $result =$instance.AudioInit(10);",
                 "rtags": [
                     "atomic",
                     "att&ck",

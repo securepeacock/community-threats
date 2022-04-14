@@ -11,6 +11,11 @@ This threat was created by Randy Pargman from BinaryDefense based on the threat 
 5. Import from Existing Threat: BoratRAT
 6. Launch the Campaign
 
+## Notes on unique functionality
+1. This threat downloads two files (Audio.dll and Ransomware.dll) from Discord CDN URLs. They are hosted on a Discord server administered by Randy Pargman of Binary Defense, and are intended to stay available online for the foreseeable future. However, if you wish to host the files yourself, simply grab the copies of Audio.dll and Ransomware.dll from the VFS folder and upload to your own Discord server, then replace the URLs in the downloader steps.
+2. The Ransomware.dll file does not actually encrypt any files. Its only purpose is to drop a ransom note that contains the same text as Borat RAT's ransom note, on the user's desktop.
+3. The Audio.dll file is written in C# and it very closely matches the functionality of the real Borat RAT Audio.dll microphone recorder, except that it doesn't communicate over the Borat RAT packed message C2 channel. You can find the source code in the linked Github project (as a submodule).
+
 ## Manual Adversary Emulation with SCYTHE
 Start a SCYTHE campaign and manually execute the below commands:
 ```

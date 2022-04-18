@@ -7,12 +7,7 @@
         "operating_system_name": "windows",
         "script": {
             "0": {
-                "conf": {
-                    "--cp": "127.0.0.1:443",
-                    "--heartbeat": 5,
-                    "--multipart": 10240,
-                    "--secure": true
-                },
+                "conf": "--cp 127.0.0.1:443 --heartbeat 5 --multipart 10240 --secure true",
                 "module": "https",
                 "type": "initialization"
             },
@@ -397,6 +392,12 @@
             "40": {
                 "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
                 "module": "run",
+                "request": "powershell del $env:USERPROFILE\\Audio.dll -Force -ErrorAction Ignore",
+                "type": "message"
+            },
+            "41": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
                 "request": "powershell.exe del $env:userprofile/Start-Hollow.ps1",
                 "rtags": [
                     "att&ck",
@@ -406,7 +407,7 @@
                 ],
                 "type": "message"
             },
-            "41": {
+            "42": {
                 "module": "controller",
                 "request": "--shutdown",
                 "rtags": [

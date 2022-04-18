@@ -1,0 +1,168 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "https://research.checkpoint.com/2022/apt35-exploits-log4j-vulnerability-to-distribute-new-modular-powershell-toolkit/",
+        "display_name": "APT35",
+        "name": "APT35",
+        "operating_system_name": "windows",
+        "script": {
+            "0": {
+                "conf": "--cp 127.0.0.1:443 --secure true",
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "name": "Module",
+                "type": "assign",
+                "value": "Applications Module"
+            },
+            "2": {
+                "module": "loader",
+                "module_to_load": "upsh",
+                "request": "--load upsh",
+                "type": "message"
+            },
+            "3": {
+                "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
+                "module": "upsh",
+                "request": "--vfs_filepath VFS:/shared/threats/APT35/Get-InstalledPrograms.ps1",
+                "rtags": [
+                    "att&ck-technique:T1059.001"
+                ],
+                "type": "message"
+            },
+            "4": {
+                "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
+                "module": "upsh",
+                "request": "--cmd get-installedprograms",
+                "rtags": [
+                    "att&ck-technique:T1059.001",
+                    "att&ck-technique:T1518"
+                ],
+                "type": "message"
+            },
+            "5": {
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "type": "message"
+            },
+            "6": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c \"wmic product get name, InstallLocation, InstallDate, Version\"",
+                "rtags": [
+                    "att&ck-technique:T1059.003",
+                    "att&ck-technique:T1518",
+                    "att&ck-technique:T1047"
+                ],
+                "type": "message"
+            },
+            "7": {
+                "name": "Module",
+                "type": "assign",
+                "value": "Screenshot"
+            },
+            "8": {
+                "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
+                "module": "upsh",
+                "request": "--vfs_filepath VFS:/shared/threats/APT35/screenshot.ps1",
+                "rtags": [
+                    "att&ck-technique:T1059.001",
+                    "att&ck-technique:T1113"
+                ],
+                "type": "message"
+            },
+            "9": {
+                "name": "Module",
+                "type": "assign",
+                "value": "Processes"
+            },
+            "10": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd.exe /c \"tasklist /v /FO csv > tasklist\"",
+                "rtags": [
+                    "att&ck-technique:T1059.003",
+                    "att&ck-technique:T1057",
+                    "att&ck-technique:T1518",
+                    "att&ck-technique:T1007"
+                ],
+                "type": "message"
+            },
+            "11": {
+                "name": "Module",
+                "type": "assign",
+                "value": "System Information"
+            },
+            "12": {
+                "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
+                "module": "upsh",
+                "request": "--vfs_filepath VFS:/shared/threats/APT35/systeminfo.ps1",
+                "rtags": [
+                    "att&ck-technique:T1082",
+                    "att&ck-technique:T1059.001"
+                ],
+                "type": "message"
+            },
+            "13": {
+                "name": "Module",
+                "type": "assign",
+                "value": "Command Execution"
+            },
+            "14": {
+                "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
+                "module": "upsh",
+                "request": "--cmd \"cd C:/; ls;\"",
+                "rtags": [
+                    "att&ck-technique:T1083",
+                    "att&ck-technique:T1059.001"
+                ],
+                "type": "message"
+            },
+            "15": {
+                "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
+                "module": "upsh",
+                "request": "--vfs_filepath VFS:/shared/threats/APT35/wlan_enum.ps1",
+                "rtags": [
+                    "att&ck-technique:T1059.001",
+                    "att&ck-technique:T1016"
+                ],
+                "type": "message"
+            },
+            "16": {
+                "depends_on": "ed8a7322-630d-4cc1-b065-8c2361d9f45d",
+                "module": "upsh",
+                "request": "--cmd Get-PSDrive",
+                "rtags": [
+                    "att&ck-technique:T1059.001"
+                ],
+                "type": "message"
+            },
+            "17": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "Cleanup"
+            },
+            "18": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c del \"info\", \"tasklist\", \"help.jpg\"",
+                "type": "message"
+            },
+            "19": {
+                "module": "controller",
+                "request": "--shutdown",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0011",
+                    "att&ck-technique:T1219"
+                ],
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29",
+        "tags": []
+    }
+}

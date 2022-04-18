@@ -8,7 +8,7 @@
         "script": {
             "0": {
                 "conf": {
-                    "--cp": "unicorn.scythedemo.com:443",
+                    "--cp": "127.0.0.1:443",
                     "--secure": true
                 },
                 "module": "https",
@@ -47,7 +47,7 @@
             "5": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS://shared/menupass/tcping.exe\"  --dest \"%USERPROFILE%\\Downloads\\tcping.exe\"",
+                "request": "--src \"VFS://shared/threats/menupass/tcping.exe\"  --dest \"%USERPROFILE%\\Downloads\\tcping.exe\"",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],
@@ -65,7 +65,7 @@
             "7": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS://shared/menupass/nbtscan-1.0.35.exe\" --dest C:\\Windows\\Temp\\nbtscan.exe",
+                "request": "--src \"VFS://shared/threats/menupass/nbtscan-1.0.35.exe\" --dest C:\\Windows\\Temp\\nbtscan.exe",
                 "rtags": [
                     "att&ck-technique:T1105"
                 ],

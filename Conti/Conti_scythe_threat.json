@@ -7,7 +7,7 @@
         "operating_system_name": "windows",
         "script": {
             "0": {
-                "conf": "{\"--cp\":\"127.0.0.1:443\",\"--secure\":true,\"--multipart\":10240,\"--heartbeat\":62,\"--jitter\":39}",
+                "conf": "--cp 127.0.0.1:443 --multipart 10240 --secure true",
                 "module": "https",
                 "type": "initialization"
             },
@@ -70,7 +70,7 @@
             "8": {
                 "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
                 "module": "run",
-                "request": "echo %userdomain%",
+                "request": "cmd /c echo %userdomain%",
                 "rtags": [
                     "att&ck-technique:T1078.002"
                 ],
@@ -260,7 +260,7 @@
             "32": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/Conti/readme.txt\" --dest \"%USERPROFILE%\\Desktop\\readme.txt\"",
+                "request": "--src \"VFS:/shared/threats/Conti/readme.txt\" --dest \"%USERPROFILE%\\Desktop\\readme.txt\"",
                 "rtags": [
                     "att&ck-technique:T1491.001"
                 ],

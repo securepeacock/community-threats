@@ -157,7 +157,7 @@
             },
             "20": {
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/DarkSide/README.txt\" --dest \"%USERPROFILE%\\Desktop\\README.txt\"",
+                "request": "--src \"VFS:/shared/threats/DarkSide/README.txt\" --dest \"%USERPROFILE%\\Desktop\\README.txt\"",
                 "rtags": [
                     "att&ck-technique:T1491.001"
                 ],

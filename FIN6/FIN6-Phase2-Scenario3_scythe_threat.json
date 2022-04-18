@@ -120,7 +120,7 @@
             "14": {
                 "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
                 "module": "downloader",
-                "request": "--src \"VFS:/shared/FIN6/kill.bat\" --dest \"%USERPROFILE%/Desktop/FIN6/kill.bat\"",
+                "request": "--src \"VFS:/shared/threats/FIN6/kill.bat\" --dest \"%USERPROFILE%/Desktop/FIN6/kill.bat\"",
                 "type": "message"
             },
             "15": {

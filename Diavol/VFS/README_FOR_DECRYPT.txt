@@ -1,0 +1,1 @@
+This is an adversary emulation by SCYTHE. If this were a real threat actor, this would be a ransom note and your data would have been stolen and encrypted.

